@@ -46,6 +46,7 @@
 	</licenses>
 	<modules>
 		<module>submodule-one</module>
+		<module>submodule-pom</module>
 	</modules>
 	<developers>
 		<developer>
