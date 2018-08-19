@@ -70,6 +70,7 @@
 				<version>3.0.0</version>
 				<executions>
 					<execution>
+						<id>add-generate-sources</id>
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>add-source</goal>
@@ -78,6 +79,20 @@
 							<sources>
 								<source>${project.basedir}/generated-src/main/java</source>
 							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-generate-resources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/generated-src/resources</directory>
+								</resource>
+							</resources>
 						</configuration>
 					</execution>
 					<execution>
