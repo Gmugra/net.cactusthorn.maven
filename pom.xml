@@ -104,7 +104,7 @@
 						<configuration>
 							<resources>
 								<resource>
-									<directory>generated-src/resources</directory>
+									<directory>generated-src/main/resources</directory>
 								</resource>
 							</resources>
 						</configuration>
