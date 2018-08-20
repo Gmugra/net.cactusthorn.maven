@@ -2,10 +2,11 @@
 
 Maven Demo project. Demonstrate:
 1. Submodules
-2. Generated sources
-3. Integration tests
+2. Generated sources (http://www.mojohaus.org/build-helper-maven-plugin/)
+3. Integration tests (https://maven.apache.org/surefire/maven-failsafe-plugin/)
 4. Checkstyle (http://checkstyle.sourceforge.net/)
-5. JVM and Command Line Options with **.mvn** (https://maven.apache.org/docs/3.3.1/release-notes.html)
+5. jar archive of the source files (https://maven.apache.org/plugins/maven-source-plugin/)
+6. JVM and Command Line Options with **.mvn** (https://maven.apache.org/docs/3.3.1/release-notes.html)
 
 How to run checkstyle:
 ```
