@@ -6,4 +6,7 @@
 
 <suppressions>
 	<suppress files="[/\\]generated-src[/\\]" checks=".*"/>
+	<suppress files="[/\\]resources[/\\]" checks=".*"/>
+	<suppress files="[/\\]target[/\\]" checks=".*"/>
+	<suppress files="pom\.xml|checkstyle_checks\.xml|checkstyle_suppressions\.xml" checks=".*"/>
 </suppressions>
