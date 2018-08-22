@@ -16,16 +16,16 @@
 			</activation>
 			<properties>
 				<build.profile.id>main</build.profile.id>
-				<skip.integration.tests>true</skip.integration.tests>
-				<skip.unit.tests>false</skip.unit.tests>
+				<skipIntegrationTests>true</skipIntegrationTests>
+				<skipTests>false</skipTests>
 			</properties>
 		</profile>
 		<profile>
 			<id>integration-test</id>
 			<properties>
 				<build.profile.id>integration-test</build.profile.id>
-				<skip.integration.tests>false</skip.integration.tests>
-				<skip.unit.tests>true</skip.unit.tests>
+				<skipIntegrationTests>false</skipIntegrationTests>
+				<skipTests>true</skipTests>
 			</properties>
 		</profile>
 	</profiles>
@@ -36,6 +36,13 @@
 		<root.basedir>${project.basedir}</root.basedir>
 
 		<dependency.version.junit>4.12</dependency.version.junit>
+
+		<plugin.version.maven.compiler>3.1</plugin.version.maven.compiler>
+		<plugin.version.maven.source>3.0.1</plugin.version.maven.source>
+		<plugin.version.build.helper.maven>3.0.0</plugin.version.build.helper.maven>
+		<plugin.version.maven.surefire>2.18.1</plugin.version.maven.surefire>
+		<plugin.version.maven.failsafe>2.18.1</plugin.version.maven.failsafe>
+		<plugin.version.maven.checkstyle>3.0.0</plugin.version.maven.checkstyle>
 	</properties>
 	<licenses>
 		<license>
@@ -58,7 +65,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>${plugin.version.maven.compiler}</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -67,7 +74,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
+				<version>${plugin.version.maven.source}</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -81,7 +88,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${plugin.version.build.helper.maven}</version>
 				<executions>
 					<execution>
 						<id>add-generate-sources</id>
@@ -140,9 +147,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.18.1</version>
+				<version>${plugin.version.maven.surefire}</version>
 				<configuration>
-					<skipTests>${skip.unit.tests}</skipTests>
+					<skipTests>${skipTests}</skipTests>
 					<excludes>
 						<exclude>**/*IT.java</exclude>
 						<exclude>**/IT*.java</exclude>
@@ -153,7 +160,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.18.1</version>
+				<version>${plugin.version.maven.failsafe}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -161,7 +168,7 @@
 							<goal>verify</goal>
 						</goals>
 						<configuration>
-							<skipTests>${skip.integration.tests}</skipTests>
+							<skipTests>${skipIntegrationTests}</skipTests>
 						</configuration>
 					</execution>
 				</executions>
@@ -169,7 +176,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${plugin.version.maven.checkstyle}</version>
 				<configuration>
 					<logViolationsToConsole>true</logViolationsToConsole>
 					<configLocation>${root.basedir}/checkstyle_checks.xml</configLocation>
