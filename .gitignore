@@ -28,3 +28,6 @@ target/
 .classpath
 .settings/
 
+# IntelliJ specifics
+.idea/
+*.iml
