@@ -9,7 +9,4 @@
 	</parent>
 	<artifactId>maven-submodule-pom-one</artifactId>
 	<packaging>jar</packaging>
-	<properties>
-		<root.basedir>${project.basedir}/../..</root.basedir>
-	</properties>
 </project>

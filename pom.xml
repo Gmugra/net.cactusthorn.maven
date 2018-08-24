@@ -8,42 +8,6 @@
 	<version>0.1</version>
 	<packaging>pom</packaging>
 	<description>Maven Research</description>
-	<profiles>
-		<profile>
-			<id>main</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<build.profile.id>main</build.profile.id>
-				<skipIntegrationTests>true</skipIntegrationTests>
-				<skipTests>false</skipTests>
-			</properties>
-		</profile>
-		<profile>
-			<id>integration-test</id>
-			<properties>
-				<build.profile.id>integration-test</build.profile.id>
-				<skipIntegrationTests>false</skipIntegrationTests>
-				<skipTests>true</skipTests>
-			</properties>
-		</profile>
-	</profiles>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<root.basedir>${project.basedir}</root.basedir>
-
-		<dependency.version.junit>4.12</dependency.version.junit>
-
-		<plugin.version.maven.compiler>3.1</plugin.version.maven.compiler>
-		<plugin.version.maven.source>3.0.1</plugin.version.maven.source>
-		<plugin.version.build.helper.maven>3.0.0</plugin.version.build.helper.maven>
-		<plugin.version.maven.surefire>2.18.1</plugin.version.maven.surefire>
-		<plugin.version.maven.failsafe>2.18.1</plugin.version.maven.failsafe>
-		<plugin.version.maven.checkstyle>3.0.0</plugin.version.maven.checkstyle>
-	</properties>
 	<licenses>
 		<license>
 			<name>BSD 2-Clause License</name>
@@ -51,15 +15,23 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-	<modules>
-		<module>submodule-one</module>
-		<module>submodule-pom</module>
-	</modules>
 	<developers>
 		<developer>
 			<name>Alexei Khatskevich</name>
 		</developer>
 	</developers>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<java.version>1.8</java.version>
+
+		<plugin.version.maven.compiler>3.8.0</plugin.version.maven.compiler>
+	</properties>
+	<modules>
+		<module>build</module>
+		<module>submodules</module>
+	</modules>
 	<build>
 		<plugins>
 			<plugin>
@@ -67,130 +39,10 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${plugin.version.maven.compiler}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>${plugin.version.maven.source}</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>${plugin.version.build.helper.maven}</version>
-				<executions>
-					<execution>
-						<id>add-generate-sources</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>generated-src/main/java</source>
-							</sources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add-generate-resources</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>add-resource</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>generated-src/main/resources</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add-integration-test-sources</id>
-						<phase>generate-test-sources</phase>
-						<goals>
-							<goal>add-test-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src/integration-test/java</source>
-							</sources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add-integration-test-resources</id>
-						<phase>generate-test-resources</phase>
-						<goals>
-							<goal>add-test-resource</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/integration-test/resources</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${plugin.version.maven.surefire}</version>
-				<configuration>
-					<skipTests>${skipTests}</skipTests>
-					<excludes>
-						<exclude>**/*IT.java</exclude>
-						<exclude>**/IT*.java</exclude>
-						<exclude>**/*ITCase.java</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${plugin.version.maven.failsafe}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-						<configuration>
-							<skipTests>${skipIntegrationTests}</skipTests>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>${plugin.version.maven.checkstyle}</version>
-				<configuration>
-					<logViolationsToConsole>true</logViolationsToConsole>
-					<configLocation>${root.basedir}/checkstyle_checks.xml</configLocation>
-					<propertyExpansion>suppressionsFile=${root.basedir}/checkstyle_suppressions.xml</propertyExpansion>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${dependency.version.junit}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 </project>

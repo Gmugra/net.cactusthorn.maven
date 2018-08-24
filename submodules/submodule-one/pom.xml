@@ -4,12 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.cactusthorn</groupId>
-		<artifactId>maven</artifactId>
+		<artifactId>maven-submodules</artifactId>
 		<version>0.1</version>
 	</parent>
 	<artifactId>maven-submodule-one</artifactId>
 	<packaging>jar</packaging>
-	<properties>
-		<root.basedir>${project.basedir}/..</root.basedir>
-	</properties>
 </project>
