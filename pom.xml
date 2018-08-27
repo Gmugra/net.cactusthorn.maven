@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.cactusthorn</groupId>
-	<artifactId>maven</artifactId>
+	<artifactId>maven-root</artifactId>
 	<version>0.1</version>
 	<packaging>pom</packaging>
 	<description>Maven Research</description>
@@ -29,8 +29,8 @@
 		<plugin.version.maven.compiler>3.8.0</plugin.version.maven.compiler>
 	</properties>
 	<modules>
-		<module>build</module>
-		<module>submodules</module>
+		<module>build-tools</module>
+		<module>modules</module>
 	</modules>
 	<build>
 		<plugins>

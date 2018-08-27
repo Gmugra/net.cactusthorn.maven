@@ -5,10 +5,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.cactusthorn</groupId>
-		<artifactId>maven</artifactId>
+		<artifactId>maven-root</artifactId>
 		<version>0.1</version>
 	</parent>
-	<artifactId>maven-submodules</artifactId>
+	<artifactId>maven-modules</artifactId>
 	<packaging>pom</packaging>
 	<profiles>
 		<profile>
@@ -46,13 +46,6 @@
 		<module>submodule-pom</module>
 	</modules>
 	<build>
-		<extensions>
-			<extension>
-				<groupId>net.cactusthorn</groupId>
-				<artifactId>maven-build</artifactId>
-				<version>0.1</version>
-			</extension>
-		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -166,10 +159,15 @@
 						<artifactId>checkstyle</artifactId>
 						<version>${dependency.version.checkstyle}</version>
 					</dependency>
+					<dependency>
+						<groupId>net.cactusthorn</groupId>
+						<artifactId>maven-build-tools</artifactId>
+						<version>${project.version}</version>
+					</dependency>
 				</dependencies>
 				<configuration>
 					<logViolationsToConsole>true</logViolationsToConsole>
-					<configLocation>checkstyle_checks.xml</configLocation>
+					<configLocation>/checkstyle_checks.xml</configLocation>
 					<propertyExpansion>suppressionsFile=/checkstyle_suppressions.xml</propertyExpansion>
 				</configuration>
 			</plugin>
