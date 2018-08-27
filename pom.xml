@@ -240,4 +240,8 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<scm>
+		<url>https://github.com/Gmugra/net.cactusthorn.maven</url>
+		<connection>scm:git:https://github.com/Gmugra/net.cactusthorn.maven.git</connection>
+	</scm>
 </project>
