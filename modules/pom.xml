@@ -171,6 +171,15 @@
 					<propertyExpansion>suppressionsFile=/checkstyle_suppressions.xml</propertyExpansion>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<configuration>
+					<effort>Max</effort>
+					<threshold>Low</threshold>
+					<maxRank>20</maxRank>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>

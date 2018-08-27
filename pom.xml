@@ -26,7 +26,10 @@
 
 		<java.version>1.8</java.version>
 
+		<dependency.version.spotbugs>3.1.6</dependency.version.spotbugs>
+
 		<plugin.version.maven.compiler>3.8.0</plugin.version.maven.compiler>
+		<plugin.version.spotbugs.maven>3.1.3</plugin.version.spotbugs.maven>
 	</properties>
 	<modules>
 		<module>build-tools</module>
@@ -44,5 +47,26 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>${plugin.version.spotbugs.maven}</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.github.spotbugs</groupId>
+							<artifactId>spotbugs</artifactId>
+							<version>${dependency.version.spotbugs}</version>
+						</dependency>
+						<dependency>
+							<groupId>net.cactusthorn</groupId>
+							<artifactId>maven-build-tools</artifactId>
+							<version>${project.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
