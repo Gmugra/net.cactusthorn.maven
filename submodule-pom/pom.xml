@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.cactusthorn</groupId>
-		<artifactId>maven-modules</artifactId>
+		<artifactId>maven-root</artifactId>
 		<version>0.1</version>
 	</parent>
 
