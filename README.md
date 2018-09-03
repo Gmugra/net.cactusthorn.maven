@@ -11,6 +11,7 @@ Maven Demo project. Demonstrate:
 8. jar archive of the source files (https://maven.apache.org/plugins/maven-source-plugin/)
 9. JVM and Command Line Options with **.mvn** (https://maven.apache.org/docs/3.3.1/release-notes.html)
 
+## How to
 How to run checkstyle:
 ```
 mvn checkstyle:check
@@ -28,6 +29,11 @@ How to run "quiet" tests mode:
 mvn test -Ptest-quiet
 mvn verify -Pintegration-test-quiet
 ```
+## "quiet" tests mode
+You definitely is using Logging in the project.
+And eventually you (by default) is using debug log-level in unit/integration test (which is fine and wanted).
+However, it could be unnecessary to get multi-megabyte "debug"-logs when you need to build the whole projects (e.g. "mvn clean install")
+Solution is to use profile(s) which substitute "default" logging configuration with "quiet"(log-level = error) logging configuration.
 
 ## couple of maven hints
 
