@@ -7,8 +7,9 @@ Maven Demo project. Demonstrate:
 4. Integration tests (https://maven.apache.org/surefire/maven-failsafe-plugin/)
 5. Checkstyle (http://checkstyle.sourceforge.net/)
 6. Spotbugs (https://spotbugs.github.io/)
-7. jar archive of the source files (https://maven.apache.org/plugins/maven-source-plugin/)
-8. JVM and Command Line Options with **.mvn** (https://maven.apache.org/docs/3.3.1/release-notes.html)
+7. "quiet" tests mode
+8. jar archive of the source files (https://maven.apache.org/plugins/maven-source-plugin/)
+9. JVM and Command Line Options with **.mvn** (https://maven.apache.org/docs/3.3.1/release-notes.html)
 
 How to run checkstyle:
 ```
@@ -21,6 +22,11 @@ mvn spotbugs:check
 How to run integration tests:
 ```
 mvn verify -Pintegration-test
+```
+How to run "quiet" tests mode:
+```
+mvn test -Ptest-quiet
+mvn verify -Pintegration-test-quiet
 ```
 
 ## couple of maven hints
