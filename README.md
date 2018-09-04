@@ -8,8 +8,9 @@ Maven Demo project. Demonstrate:
 5. Checkstyle (http://checkstyle.sourceforge.net/)
 6. Spotbugs (https://spotbugs.github.io/)
 7. "quiet" tests mode
-8. jar archive of the source files (https://maven.apache.org/plugins/maven-source-plugin/)
-9. JVM and Command Line Options with **.mvn** (https://maven.apache.org/docs/3.3.1/release-notes.html)
+8. "all-jar", jar which including its dependencies (https://maven.apache.org/plugins/maven-shade-plugin/, example: /submodule-one/pom.xml )
+9. jar archive of the source files (https://maven.apache.org/plugins/maven-source-plugin/)
+10. JVM and Command Line Options with **.mvn** (https://maven.apache.org/docs/3.3.1/release-notes.html)
 
 ## How to
 How to run checkstyle:

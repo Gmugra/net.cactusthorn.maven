@@ -1,6 +1,11 @@
 package net.cactusthorn.maven;
 
 public class DemoOne {
+	
+	public static void main (String... args) {
+		DemoOne demoOne = new DemoOne();
+		demoOne.plus(10L);
+	}
 
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(DemoOne.class);
 
