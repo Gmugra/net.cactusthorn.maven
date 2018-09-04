@@ -29,6 +29,34 @@ How to run "quiet" tests mode:
 mvn test -Ptest-quiet
 mvn verify -Pintegration-test-quiet
 ```
+
+## checkstyle
+Here we have a bit tricky configuration to make it possible to use the same configuration files (checks & suppressions) in IDE plugins:
+1. Eclipse: http://checkstyle.org/eclipse-cs/#!/
+2. IntelliJ IDEA: https://plugins.jetbrains.com/plugin/1065-checkstyle-idea
+
+Path to the suppressions file from property (checkstyle_checks.xml):
+```
+<module name="Checker">
+...
+	<module name="SuppressionFilter">
+		<property name="file" value="${suppressionsFile}" />
+		<property name="optional" value="false" />
+	</module>
+...
+</module>
+```
+and in the pom.xml we provide value for the "suppressionsFile" property:
+```
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-checkstyle-plugin</artifactId>
+<version>${plugin.version.maven.checkstyle}</version>
+<configuration>
+	...
+	<propertyExpansion>suppressionsFile=/checkstyle_suppressions.xml</propertyExpansion>
+</configuration>
+```
+
 ## "quiet" tests mode
 You definitely is using Logging in the project.
 And eventually you (by default) is using debug log-level in unit/integration test (which is fine and wanted).
