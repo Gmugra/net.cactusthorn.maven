@@ -2,42 +2,51 @@
 
 Maven Demo project. Demonstrate:
 1. Submodules
-2. build-tools module
-3. Generated sources (http://www.mojohaus.org/build-helper-maven-plugin/)
-4. Integration tests (https://maven.apache.org/surefire/maven-failsafe-plugin/)
-5. Checkstyle (http://checkstyle.sourceforge.net/)
-6. Spotbugs (https://spotbugs.github.io/)
-7. "quiet" tests mode
-8. "all-jar", jar which including its dependencies (https://maven.apache.org/plugins/maven-shade-plugin/, example: /submodule-one/pom.xml )
-9. jar archive of the source files (https://maven.apache.org/plugins/maven-source-plugin/)
-10. JVM and Command Line Options with **.mvn** (https://maven.apache.org/docs/3.3.1/release-notes.html)
+1. build-tools module
+1. Generated sources
+   1. http://www.mojohaus.org/build-helper-maven-plugin/
+1. Integration tests
+   1. https://maven.apache.org/surefire/maven-failsafe-plugin/
+   1. https://www.petrikainulainen.net/programming/maven/integration-testing-with-maven/
+1. Checkstyle
+   1. http://checkstyle.sourceforge.net/
+1. Spotbugs
+   1. https://spotbugs.github.io/
+1. "quiet" tests mode
+1. "all-jar", jar which including its dependencies
+   1. https://maven.apache.org/plugins/maven-shade-plugin/
+   1. example: /submodule-one/pom.xml
+1. jar archive of the source files
+   1. https://maven.apache.org/plugins/maven-source-plugin/
+1. JVM and Command Line Options with **.mvn**
+   1. https://maven.apache.org/docs/3.3.1/release-notes.html
 
 ## How to
 How to run checkstyle:
-```
+```bash
 mvn checkstyle:check
 ```
 How to run spotbugs:
-```
+```bash
 mvn spotbugs:check
 ```
 How to run integration tests:
-```
+```bash
 mvn verify -Pintegration-test
 ```
 How to run "quiet" tests mode:
-```
+```bash
 mvn test -Ptest-quiet
 mvn verify -Pintegration-test-quiet
 ```
 
 ## checkstyle
 Here we have a bit tricky configuration to make it possible to use the same configuration files (checks & suppressions) in IDE plugins:
-1. Eclipse: http://checkstyle.org/eclipse-cs/#!/
-2. IntelliJ IDEA: https://plugins.jetbrains.com/plugin/1065-checkstyle-idea
+* Eclipse: http://checkstyle.org/eclipse-cs/#!/
+* IntelliJ IDEA: https://plugins.jetbrains.com/plugin/1065-checkstyle-idea
 
 Path to the suppressions file from property (checkstyle_checks.xml):
-```
+```xml
 <module name="Checker">
 ...
 	<module name="SuppressionFilter">
@@ -48,7 +57,7 @@ Path to the suppressions file from property (checkstyle_checks.xml):
 </module>
 ```
 and in the pom.xml we provide value for the "suppressionsFile" property:
-```
+```xml
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-checkstyle-plugin</artifactId>
 <version>${plugin.version.maven.checkstyle}</version>
@@ -67,12 +76,12 @@ Solution is to use profile(s) which substitute "default" logging configuration w
 ## couple of maven hints
 
 Get artifact in the local repository with all dependencies:
-```
+```bash
 mvn org.apache.maven.plugins:maven-dependency-plugin:3.0.2:get -Dartifact=io.swagger:swagger-codegen-cli:2.3.1
 ```
 
 Add Jar in the local repository
-```
+```bash
 mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -DartifactId=my-artifact-it -Dversion={version} -Dpackaging=jar
 ```
 
