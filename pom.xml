@@ -3,11 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.cactusthorn</groupId>
-	<artifactId>maven-root</artifactId>
+	<groupId>net.cactusthorn.maven</groupId>
+	<artifactId>root</artifactId>
 	<version>0.1</version>
 	<packaging>pom</packaging>
-	<description>Maven Research</description>
+	<description>Maven Template Project</description>
 	<licenses>
 		<license>
 			<name>BSD 2-Clause License</name>
@@ -90,8 +90,8 @@
 	<dependencies>
 		<!-- to make maven-build-tools available in surefire/failsafe-plugin classpath -->
 		<dependency>
-			<groupId>net.cactusthorn</groupId>
-			<artifactId>maven-build-tools</artifactId>
+			<groupId>net.cactusthorn.maven</groupId>
+			<artifactId>build-tools</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -243,8 +243,8 @@
 						<version>${dependency.version.checkstyle}</version>
 					</dependency>
 					<dependency>
-						<groupId>net.cactusthorn</groupId>
-						<artifactId>maven-build-tools</artifactId>
+						<groupId>net.cactusthorn.maven</groupId>
+						<artifactId>build-tools</artifactId>
 						<version>${project.version}</version>
 					</dependency>
 				</dependencies>
@@ -277,8 +277,8 @@
 							<version>${dependency.version.spotbugs}</version>
 						</dependency>
 						<dependency>
-							<groupId>net.cactusthorn</groupId>
-							<artifactId>maven-build-tools</artifactId>
+							<groupId>net.cactusthorn.maven</groupId>
+							<artifactId>build-tools</artifactId>
 							<version>${project.version}</version>
 						</dependency>
 					</dependencies>
