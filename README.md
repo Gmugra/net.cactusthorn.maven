@@ -20,6 +20,7 @@ Maven Demo project. Demonstrate:
    1. https://maven.apache.org/plugins/maven-source-plugin/
 1. JVM and Command Line Options with **.mvn**
    1. https://maven.apache.org/docs/3.3.1/release-notes.html
+1. The project local maven repository
 
 ## How to
 How to run checkstyle:
@@ -75,14 +76,22 @@ Solution is to use profile(s) which substitute "default" logging configuration w
 
 ## couple of maven hints
 
+List of predefined Maven properties:
+https://github.com/cko/predefined_maven_properties/blob/master/README.md
+
 Get artifact in the local repository with all dependencies:
 ```bash
 mvn org.apache.maven.plugins:maven-dependency-plugin:3.0.2:get -Dartifact=io.swagger:swagger-codegen-cli:2.3.1
 ```
 
-Add Jar in the local repository
+Add Jar in the local repository:
 ```bash
 mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -DartifactId=my-artifact-it -Dversion={version} -Dpackaging=jar
+```
+
+Add Jar in the project local repository:
+```bash
+mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -DartifactId=my-artifact-it -Dversion={version} -Dpackaging=jar -DlocalRepositoryPath=../project-maven-repository -DcreateChecksum=true
 ```
 
 ## License
