@@ -21,6 +21,13 @@
 			<name>Alexei Khatskevich</name>
 		</developer>
 	</developers>
+	<repositories>
+		<repository>
+			<id>project-maven-repository</id>
+			<name>The project local maven repository</name>
+			<url>file:///${project.basedir}/project-maven-repository</url>
+		</repository>
+	</repositories>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -32,6 +39,8 @@
 		<dependency.version.junit>4.12</dependency.version.junit>
 		<dependency.version.slf4j-api>1.7.25</dependency.version.slf4j-api>
 		<dependency.version.logback-classic>1.2.3</dependency.version.logback-classic>
+
+		<dependency.version.net-cactusthorn-utils>0.1</dependency.version.net-cactusthorn-utils>
 
 		<plugin.version.maven.compiler>3.8.0</plugin.version.maven.compiler>
 		<plugin.version.maven.source>3.0.1</plugin.version.maven.source>
@@ -90,6 +99,12 @@
 		<module>submodule-pom</module>
 	</modules>
 	<dependencies>
+		<!-- dependency from project-maven-repository -->
+		<dependency>
+			<groupId>net.cactusthorn</groupId>
+			<artifactId>utils</artifactId>
+			<version>${dependency.version.net-cactusthorn-utils}</version>
+		</dependency>
 		<!-- to make maven-build-tools available in surefire/failsafe-plugin classpath -->
 		<dependency>
 			<groupId>net.cactusthorn.maven</groupId>

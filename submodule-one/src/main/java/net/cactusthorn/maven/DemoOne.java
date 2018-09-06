@@ -1,11 +1,14 @@
 package net.cactusthorn.maven;
 
+import java.security.NoSuchAlgorithmException;
+import net.cactusthorn.utils.security.SHA1;
+
 public class DemoOne {
-	
-	public static void main (String... args) {
-		DemoOne demoOne = new DemoOne();
-		demoOne.plus(10L);
-	}
+
+    public static void main(String... args) {
+        DemoOne demoOne = new DemoOne();
+        demoOne.plus(10L);
+    }
 
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(DemoOne.class);
 
@@ -14,6 +17,13 @@ public class DemoOne {
     private long value = INIT_VALUE;
 
     public DemoOne() {
+
+        try {
+            LOG.info("Test SHA1 = {}", SHA1.asHEXFrom("testStr"));
+        } catch (NoSuchAlgorithmException e) {
+            LOG.error("", e);
+        }
+
         LOG.debug("Test Debug Message");
         LOG.debug("Test Debug Message 1");
         LOG.debug("Test Debug Message 2");
