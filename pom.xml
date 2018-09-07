@@ -26,6 +26,16 @@
 			<id>project-maven-repository</id>
 			<name>The project local maven repository</name>
 			<url>file:///${project.basedir}/project-maven-repository</url>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>ignore</checksumPolicy>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<checksumPolicy>ignore</checksumPolicy>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
 		</repository>
 	</repositories>
 	<properties>
