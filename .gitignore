@@ -31,3 +31,6 @@ target/
 # IntelliJ specifics
 .idea/
 *.iml
+
+#unignore all in project-maven-repository
+!project-maven-repository/**
