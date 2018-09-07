@@ -91,7 +91,7 @@ mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -Darti
 
 Add Jar in the project local repository:
 ```bash
-mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -DartifactId=my-artifact-it -Dversion={version} -Dpackaging=jar -DlocalRepositoryPath=../project-maven-repository -DcreateChecksum=true
+mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -DartifactId=my-artifact-it -Dversion={version} -Dpackaging=jar -DlocalRepositoryPath=../project-maven-repository
 ```
 
 ## License
