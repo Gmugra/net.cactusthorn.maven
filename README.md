@@ -21,6 +21,11 @@ Maven Demo project. Demonstrate:
 1. JVM and Command Line Options with **.mvn**
    1. https://maven.apache.org/docs/3.3.1/release-notes.html
 1. The project local maven repository
+   1. https://maven.apache.org/guides/mini/guide-multiple-repositories.html
+1. Enforce a minimum version of Maven in pom.xml
+   1. https://maven.apache.org/enforcer/maven-enforcer-plugin/
+1. SCM information
+   1. https://maven.apache.org/pom.html#SCM
 
 ## How to
 How to run checkstyle:
@@ -72,7 +77,17 @@ and in the pom.xml we provide value for the "suppressionsFile" property:
 You definitely is using Logging in the project.
 And eventually you (by default) is using debug log-level in unit/integration test (which is fine and wanted).
 However, it could be unnecessary to get multi-megabyte "debug"-logs when you need to build the whole projects (e.g. "mvn clean install")
-Solution is to use profile(s) which substitute "default" logging configuration with "quiet"(log-level = error) logging configuration.
+Solution: use the profile(s) which substitute "default" logging configuration with "quiet"(log-level = error) logging configuration.
+
+## The project local maven repository
+Sometimes you are dealing with jar(s) which are not available on [maven.org](https://search.maven.org/) :). And you do not have "private" artifact repository (like [Nexus](https://www.sonatype.com/nexus-repository-oss) or [Artifactory](https://jfrog.com/artifactory/) ), where you can simple place it.
+
+How to configure such jar as dependency?
+Scope *system* make it possible, but it's very special scope. This scope is working similar with scope *provided*: e.g. the jar(s) will not included in target *war*, it will ignored by *maven-shade-plugin* and so on.
+
+The best option for having local jar files as a dependency is to create local maven repository directly in the project folder (and as result it will be part of your project sources)
+1. *mvn install:install-file with* with *-DlocalRepositoryPath* will do all the work.
+1. To avoid the "Could not validate integrity of download ... Checksum validation failed, no checksums available" warning - use *checksumPolicy = ignore* in the pom.xml, which is fine for such local repository.
 
 ## couple of maven hints
 
