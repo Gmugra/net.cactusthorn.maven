@@ -99,14 +99,18 @@ Get artifact in the local repository with all dependencies:
 mvn org.apache.maven.plugins:maven-dependency-plugin:3.0.2:get -Dartifact=io.swagger:swagger-codegen-cli:2.3.1
 ```
 
-Add Jar in the local repository:
+Add jar in the local repository:
 ```bash
 mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -DartifactId=my-artifact-it -Dversion={version} -Dpackaging=jar
 ```
 
-Add Jar in the project local repository:
+Add jar in the project local repository:
 ```bash
 mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -DartifactId=my-artifact-it -Dversion={version} -Dpackaging=jar -DlocalRepositoryPath=../project-maven-repository
+```
+Add "all" jar in the project local repository :
+```bash
+mvn install:install-file -Dfile=checkstyle-8.12-all.jar -DgroupId=com.puppycrawl.tools -DartifactId=checkstyle -Dversion=8.12 -Dpackaging=jar -Dclassifier=all -DlocalRepositoryPath=../project-maven-repository
 ```
 
 ## License

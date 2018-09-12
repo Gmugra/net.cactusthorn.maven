@@ -4,6 +4,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.puppycrawl.tools</groupId>
   <artifactId>checkstyle</artifactId>
-  <version>8.12-all</version>
+  <version>8.12</version>
   <description>POM was created from install:install-file</description>
 </project>
