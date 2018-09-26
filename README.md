@@ -12,6 +12,9 @@ Maven Demo project. Demonstrate:
    1. http://checkstyle.sourceforge.net/
 1. Spotbugs
    1. https://spotbugs.github.io/
+1. Cobertura
+   1. http://cobertura.github.io/cobertura/
+   1. http://www.mojohaus.org/cobertura-maven-plugin/
 1. "quiet" tests mode
 1. "all-jar", jar which including its dependencies
    1. https://maven.apache.org/plugins/maven-shade-plugin/
@@ -44,6 +47,10 @@ How to run "quiet" tests mode:
 ```bash
 mvn test -Ptest-quiet
 mvn verify -Pintegration-test-quiet
+```
+How to generate cobertura site report (generated site in target/site/cobertura/ )
+```bash
+mvn cobertura:cobertura
 ```
 
 ## checkstyle
