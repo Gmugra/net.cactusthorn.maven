@@ -109,6 +109,7 @@
 	</profiles>
 	<modules>
 		<module>build-tools</module>
+		<module>config</module>
 		<module>submodule-one</module>
 		<module>submodule-pom</module>
 	</modules>

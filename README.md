@@ -4,9 +4,9 @@ Maven Demo project. Demonstrate:
 1. Submodules
 1. build-tools module
 1. Generated sources
-   1. http://www.mojohaus.org/build-helper-maven-plugin/
+   1. Build Helper Plugin: http://www.mojohaus.org/build-helper-maven-plugin/
 1. Integration tests
-   1. https://maven.apache.org/surefire/maven-failsafe-plugin/
+   1. Failsafe Plugin: https://maven.apache.org/surefire/maven-failsafe-plugin/
    1. https://www.petrikainulainen.net/programming/maven/integration-testing-with-maven/
 1. Checkstyle
    1. http://checkstyle.sourceforge.net/
@@ -14,21 +14,25 @@ Maven Demo project. Demonstrate:
    1. https://spotbugs.github.io/
 1. Cobertura
    1. http://cobertura.github.io/cobertura/
-   1. http://www.mojohaus.org/cobertura-maven-plugin/
+   1. Cobertura Plugin: http://www.mojohaus.org/cobertura-maven-plugin/
 1. "quiet" tests mode
 1. "all-jar", jar which including its dependencies
-   1. https://maven.apache.org/plugins/maven-shade-plugin/
+   1. Shade Plugin: https://maven.apache.org/plugins/maven-shade-plugin/
    1. example: /submodule-one/pom.xml
 1. jar archive of the source files
-   1. https://maven.apache.org/plugins/maven-source-plugin/
+   1. Source Plugin: https://maven.apache.org/plugins/maven-source-plugin/
 1. JVM and Command Line Options with **.mvn**
    1. https://maven.apache.org/docs/3.3.1/release-notes.html
 1. The project local maven repository
    1. https://maven.apache.org/guides/mini/guide-multiple-repositories.html
 1. Enforce a minimum version of Maven in pom.xml
-   1. https://maven.apache.org/enforcer/maven-enforcer-plugin/
+   1. Enforcer Plugin: https://maven.apache.org/enforcer/maven-enforcer-plugin/
 1. SCM information
    1. https://maven.apache.org/pom.html#SCM
+1. ZIP-artifacts with parameterized configuration files
+   1. example: /config/pom.xml
+   1. Properties Plugin: https://www.mojohaus.org/properties-maven-plugin/
+   1. Assembly Plugin: https://maven.apache.org/plugins/maven-assembly-plugin/
 
 ## How to
 How to run checkstyle:
@@ -51,6 +55,10 @@ mvn verify -Pintegration-test-quiet
 How to generate cobertura site report (generated site in target/site/cobertura/ )
 ```bash
 mvn cobertura:cobertura
+```
+How to build "config.zip" with configuration for environment "super":
+```bash
+mvn verify -Dtarget.environment=super
 ```
 
 ## checkstyle
@@ -95,6 +103,10 @@ Scope *system* make it possible, but it's very special scope. This scope is work
 The best option for having local jar files as a dependency is to create local maven repository directly in the project folder (and as result it will be part of your project sources)
 1. *mvn install:install-file with* with *-DlocalRepositoryPath* will do all the work.
 1. To avoid the "Could not validate integrity of download ... Checksum validation failed, no checksums available" warning - use *checksumPolicy = ignore* in the pom.xml, which is fine for such local repository.
+
+## ZIP-artifacts with parameterized configuration files
+Sometimes it's nice to have ZIP-artifacts with different configuration files (and resources) which will be late used during deployment the project in various environments(e.g. deployment with [Jenkins](https://jenkins.io/)). So, for each environment we want to have specific ZIP, filled with specific (for the environment) configurations, resources and so on.
+Note: It support default configurations and overriding default configuration files.
 
 ## couple of maven hints
 

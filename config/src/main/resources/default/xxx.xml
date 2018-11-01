@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<subroot1>${test.one}</subroot1>
+	<subroot2>2</subroot2>
+</root>
