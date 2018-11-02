@@ -10,6 +10,7 @@
 	</parent>
 	<artifactId>submodule-one</artifactId>
 	<packaging>jar</packaging>
+	<name>Sub-Module One</name>
 	<build>
 		<plugins>
 			<plugin>

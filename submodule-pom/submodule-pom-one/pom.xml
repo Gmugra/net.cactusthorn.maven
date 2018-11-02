@@ -10,4 +10,5 @@
 	</parent>
 	<artifactId>submodule-pom-one</artifactId>
 	<packaging>jar</packaging>
+	<name>Sub Module POM One</name>
 </project>
