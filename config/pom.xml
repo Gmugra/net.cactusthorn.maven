@@ -56,6 +56,13 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>${plugin.version.maven.resources}</version>
+				<!--
+					http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html :
+
+					When multiple executions are given that match a particular phase,
+					they are executed in the order specified in the POM,
+					with inherited executions running first.
+				-->
 				<executions>
 					<execution>
 						<id>resources-default</id>
