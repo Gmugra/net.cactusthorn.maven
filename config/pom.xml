@@ -65,7 +65,7 @@
 				-->
 				<executions>
 					<execution>
-						<id>resources-default</id>
+						<id>resources-bydefault</id>
 						<phase>process-resources</phase>
 						<goals>
 							<goal>copy-resources</goal>
