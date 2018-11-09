@@ -28,7 +28,8 @@
 		<plugin.version.maven.compiler>3.8.0</plugin.version.maven.compiler>
 		<plugin.version.properties.maven>1.0.0</plugin.version.properties.maven>
 		<plugin.version.maven.resources>3.1.0</plugin.version.maven.resources>
-		<plugin.version.maven.maven.assembly>3.1.0</plugin.version.maven.maven.assembly>
+		<plugin.version.maven.assembly>3.1.0</plugin.version.maven.assembly>
+		<plugin.version.maven.antrun>1.8</plugin.version.maven.antrun>
 	</properties>
 	<profiles>
 		<profile>
@@ -49,6 +50,26 @@
 	</profiles>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${plugin.version.maven.antrun}</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo level="info" message="============================"/>
+								<echo level="info" message="Target Environment: ${target.environment}"/>
+								<echo level="info" message="============================"/>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>properties-maven-plugin</artifactId>
@@ -121,7 +142,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>${plugin.version.maven.maven.assembly}</version>
+				<version>${plugin.version.maven.assembly}</version>
 				<configuration>
 					<descriptors>
 						<descriptor>${project.basedir}/assembly.xml</descriptor>

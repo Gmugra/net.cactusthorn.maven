@@ -33,6 +33,9 @@ Maven Demo project. Demonstrate:
    1. example: /config/pom.xml
    1. Properties Plugin: https://www.mojohaus.org/properties-maven-plugin/
    1. Assembly Plugin: https://maven.apache.org/plugins/maven-assembly-plugin/
+1. Echo in maven output
+   1. Maven AntRun Plugin: https://maven.apache.org/plugins/maven-antrun-plugin/
+
 
 ## How to
 How to run checkstyle:
