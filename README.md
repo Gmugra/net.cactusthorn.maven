@@ -58,7 +58,7 @@ mvn cobertura:cobertura
 ```
 How to build "config.zip" with configuration for environment "super":
 ```bash
-mvn verify -Dtarget.environment=super
+mvn verify -Penvironment-super
 ```
 
 ## checkstyle
@@ -106,7 +106,7 @@ The best option for having local jar files as a dependency is to create local ma
 
 ## ZIP-artifacts with parameterized configuration files
 Sometimes it's nice to have ZIP-artifacts with different configuration files (and resources) which will be late used during deployment the project in various environments(e.g. deployment with [Jenkins](https://jenkins.io/)). So, for each environment we want to have specific ZIP, filled with specific (for the environment) configurations, resources and so on.
-Note: It support default configurations and overriding default configuration files.
+Note: It support default configurations/properties and overriding default configuration/properties.
 
 ## couple of maven hints
 

@@ -22,8 +22,6 @@
 		</developer>
 	</developers>
 	<properties>
-		<target.environment>default</target.environment>
-
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -32,6 +30,23 @@
 		<plugin.version.maven.resources>3.1.0</plugin.version.maven.resources>
 		<plugin.version.maven.maven.assembly>3.1.0</plugin.version.maven.maven.assembly>
 	</properties>
+	<profiles>
+		<profile>
+			<id>environment-default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<target.environment>default</target.environment>
+			</properties>
+		</profile>
+		<profile>
+			<id>environment-super</id>
+			<properties>
+				<target.environment>super</target.environment>
+			</properties>
+		</profile>
+	</profiles>
 	<build>
 		<plugins>
 			<plugin>
@@ -40,7 +55,7 @@
 				<version>${plugin.version.properties.maven}</version>
 				<executions>
 					<execution>
-						<id>properties-bydefault</id>
+						<id>properties</id>
 						<phase>initialize</phase>
 						<goals>
 							<goal>read-project-properties</goal>
@@ -48,17 +63,6 @@
 						<configuration>
 							<files>
 								<file>src/main/config/default.properties</file>
-							</files>
-						</configuration>
-					</execution>
-					<execution>
-						<id>properties-${target.environment}</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>read-project-properties</goal>
-						</goals>
-						<configuration>
-							<files>
 								<file>src/main/config/${target.environment}.properties</file>
 							</files>
 						</configuration>
@@ -69,10 +73,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>${plugin.version.maven.resources}</version>
-				<!-- http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html 
-					: When multiple executions are given that match a particular phase, they 
-					are executed in the order specified in the POM, with inherited executions 
-					running first. -->
+				<!-- http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html: 
+					When multiple executions are given that match a particular phase, they are 
+					executed in the order specified in the POM, with inherited executions running 
+					first. -->
 				<executions>
 					<execution>
 						<id>resources-bydefault</id>
