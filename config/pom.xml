@@ -40,6 +40,19 @@
 				<version>${plugin.version.properties.maven}</version>
 				<executions>
 					<execution>
+						<id>properties-bydefault</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>src/main/config/default.properties</file>
+							</files>
+						</configuration>
+					</execution>
+					<execution>
+						<id>properties-${target.environment}</id>
 						<phase>initialize</phase>
 						<goals>
 							<goal>read-project-properties</goal>
@@ -56,13 +69,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>${plugin.version.maven.resources}</version>
-				<!--
-					http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html :
-
-					When multiple executions are given that match a particular phase,
-					they are executed in the order specified in the POM,
-					with inherited executions running first.
-				-->
+				<!-- http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html 
+					: When multiple executions are given that match a particular phase, they 
+					are executed in the order specified in the POM, with inherited executions 
+					running first. -->
 				<executions>
 					<execution>
 						<id>resources-bydefault</id>
