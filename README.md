@@ -63,6 +63,10 @@ How to build "config.zip" with configuration for environment "super":
 ```bash
 mvn verify -Penvironment-super
 ```
+How to multiple Profiles:
+```bash
+mvn clean verify -Penvironment-super -Pintegration-test
+```
 
 ## checkstyle
 Here we have a bit tricky configuration to make it possible to use the same configuration files (checks & suppressions) in IDE plugins:
