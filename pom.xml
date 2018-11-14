@@ -160,7 +160,8 @@
 						<configuration>
 							<target>
 								<echo level="info" message="============================" />
-								<echo level="info" message="Bild Profile: ${build.profile.id}" />
+								<echo level="info"
+									message="Bild Profile: ${build.profile.id}" />
 								<echo level="info" message="============================" />
 							</target>
 						</configuration>
@@ -391,6 +392,30 @@
 							<version>${project.version}</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-antrun-plugin</artifactId>
+										<versionRange>${plugin.version.maven.antrun}</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
