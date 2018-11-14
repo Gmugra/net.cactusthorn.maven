@@ -2,33 +2,57 @@
 <assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
 	<id>${target.environment}</id><!-- will be end part of target file name -->
+
 	<formats>
 		<format>zip</format>
 	</formats>
+
 	<baseDirectory>/</baseDirectory>
+
 	<fileSets>
+
+		<!-- shell scripts must have LF as EOL -->
 		<fileSet>
 			<directory>${project.build.directory}/${target.environment}</directory>
 			<includes>
 				<include>**/*.sh</include>
+			</includes>
+			<lineEnding>unix</lineEnding>
+			<filtered>true</filtered>
+			<outputDirectory>./</outputDirectory>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.build.directory}/${target.environment}</directory>
+			<includes>
 				<include>**/*.properties</include>
 				<include>**/*.json</include>
 				<include>**/*.xml</include>
 				<include>**/*.config</include>
-				<include>.</include>
 			</includes>
 			<filtered>true</filtered>
 			<outputDirectory>./</outputDirectory>
 		</fileSet>
 
+		<!-- binary files must have filtered = false! -->
+		<fileSet>
+			<directory>${project.build.directory}/${target.environment}</directory>
+			<includes>
+				<include>**/*.png</include>
+			</includes>
+			<filtered>false</filtered>
+			<outputDirectory>./</outputDirectory>
+		</fileSet>
+
+		<!-- lets create empty sub-folders -->
 		<fileSet>
 			<outputDirectory>./subfolder/one</outputDirectory>
 			<excludes>
 				<exclude>**/*</exclude>
 			</excludes>
 		</fileSet>
-
 		<fileSet>
 			<outputDirectory>./subfolder/two</outputDirectory>
 			<excludes>
