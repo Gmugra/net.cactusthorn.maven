@@ -30,8 +30,10 @@ target/
 
 bin/
 
-# eclipse specifics
-.settings/
+# eclipse specifics ( ignore everything except core.prefs )
+!.settings
+**/.settings/**
+!**/.settings/org.eclipse.jdt.core.prefs
 
 # IntelliJ specifics
 .idea/
