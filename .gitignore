@@ -2,7 +2,7 @@
 !.gitattributes
 !.gitignore
 !.gitkeep
-!.mvn/
+!.mvn/*.config
 
 # Compiled class file
 *.class
