@@ -38,4 +38,4 @@ bin/
 *.iml
 
 #unignore all in project-maven-repository
-!project-maven-repository/**
+!/project-maven-repository/**
