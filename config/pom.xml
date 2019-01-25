@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.cactusthorn.maven</groupId>
 	<artifactId>config</artifactId>
-	<version>0.1</version>
+	<version>${revision}</version>
 	<packaging>pom</packaging>
 	<name>Configurations</name>
 	<description>Prepare ZIP with configurations</description>

@@ -35,7 +35,11 @@ Maven Demo project. Demonstrate:
    1. Assembly Plugin: https://maven.apache.org/plugins/maven-assembly-plugin/
 1. Echo in maven output
    1. Maven AntRun Plugin: https://maven.apache.org/plugins/maven-antrun-plugin/
-
+1. ${revision} in version
+   1. https://issues.apache.org/jira/browse/MNG-5576
+   1. https://maven.apache.org/maven-ci-friendly.html
+   1. This is actually "continuous delivery friendly"-feature, and it also can be used to have only one place in the project which set the version for all modules/sub-modules in the project
+}
 
 ## How to
 How to run checkstyle:

@@ -5,7 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.cactusthorn.maven</groupId>
 	<artifactId>root</artifactId>
-	<version>0.1</version>
+	<!--
+		${revision} can be used in the version starting from maven 3.2.1:
+		https://issues.apache.org/jira/browse/MNG-5576
+		
+		the value of the property set in /.mvn/maven.config
+	-->
+	<version>${revision}</version>
 	<packaging>pom</packaging>
 	<name>Maven Template</name>
 	<description>Maven tips and tricks</description>
@@ -43,6 +49,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<java.version>1.8</java.version>
+
+		<!-- 3.3.1 required for JVM and Command Line Options with .mvn -->
 		<require.maven.version>3.3.1</require.maven.version>
 
 		<dependency.version.spotbugs>3.1.6</dependency.version.spotbugs>
