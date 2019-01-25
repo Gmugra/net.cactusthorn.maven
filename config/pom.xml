@@ -5,6 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.cactusthorn.maven</groupId>
 	<artifactId>config</artifactId>
+	<!-- the value of the ${revision} property set in /.mvn/maven.config -->
 	<version>${revision}</version>
 	<packaging>pom</packaging>
 	<name>Configurations</name>

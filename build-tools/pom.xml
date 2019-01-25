@@ -5,6 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.cactusthorn.maven</groupId>
 	<artifactId>build-tools</artifactId>
+	<!-- the value of the ${revision} property set in /.mvn/maven.config -->
 	<version>${revision}</version>
 	<packaging>jar</packaging>
 	<name>Build Tools</name>

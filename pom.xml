@@ -8,8 +8,9 @@
 	<!--
 		${revision} can be used in the version starting from maven 3.2.1:
 		https://issues.apache.org/jira/browse/MNG-5576
+		https://maven.apache.org/maven-ci-friendly.html
 		
-		the value of the property set in /.mvn/maven.config
+		The value of the ${revision} property set in /.mvn/maven.config
 	-->
 	<version>${revision}</version>
 	<packaging>pom</packaging>
@@ -124,7 +125,7 @@
 		<module>submodule-pom</module>
 	</modules>
 	<dependencies>
-		<!-- dependency from project-maven-repository -->
+		<!-- artifact from the project-maven-repository (local project repository)-->
 		<dependency>
 			<groupId>net.cactusthorn</groupId>
 			<artifactId>utils</artifactId>
