@@ -9,7 +9,7 @@
 		${revision} can be used in the version starting from maven 3.2.1:
 		https://issues.apache.org/jira/browse/MNG-5576
 		https://maven.apache.org/maven-ci-friendly.html
-		
+
 		The value of the ${revision} property set in /.mvn/maven.config
 	-->
 	<version>${revision}</version>
@@ -46,6 +46,7 @@
 		</repository>
 	</repositories>
 	<properties>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -76,45 +77,23 @@
 		<plugin.version.cobertura.maven>2.7</plugin.version.cobertura.maven>
 		<plugin.version.maven.antrun>1.8</plugin.version.maven.antrun>
 		<plugin.version.flatten.maven>1.1.0</plugin.version.flatten.maven>
+
+		<skipIntegrationTests>true</skipIntegrationTests>
+		<skipTests>false</skipTests>
+		<logback-configurationFile>dummy.xml</logback-configurationFile>
 	</properties>
 	<profiles>
 		<profile>
-			<id>main</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<build.profile.id>main</build.profile.id>
-				<skipIntegrationTests>true</skipIntegrationTests>
-				<skipTests>false</skipTests>
-				<logback-configurationFile>dummy.xml</logback-configurationFile>
-			</properties>
-		</profile>
-		<profile>
 			<id>test-quiet</id>
 			<properties>
-				<build.profile.id>test-quiet</build.profile.id>
-				<skipIntegrationTests>true</skipIntegrationTests>
-				<skipTests>false</skipTests>
 				<logback-configurationFile>only-error-logback-test.xml</logback-configurationFile>
 			</properties>
 		</profile>
 		<profile>
 			<id>integration-test</id>
 			<properties>
-				<build.profile.id>integration-test</build.profile.id>
 				<skipIntegrationTests>false</skipIntegrationTests>
 				<skipTests>true</skipTests>
-				<logback-configurationFile>dummy.xml</logback-configurationFile>
-			</properties>
-		</profile>
-		<profile>
-			<id>integration-test-quiet</id>
-			<properties>
-				<build.profile.id>integration-test-quiet</build.profile.id>
-				<skipIntegrationTests>false</skipIntegrationTests>
-				<skipTests>true</skipTests>
-				<logback-configurationFile>only-error-logback-test.xml</logback-configurationFile>
 			</properties>
 		</profile>
 	</profiles>
@@ -170,7 +149,9 @@
 						<configuration>
 							<target>
 								<echo level="info" message="============================" />
-								<echo level="info" message="Bild Profile: ${build.profile.id}" />
+								<echo level="info" message="skipIntegrationTests: ${skipIntegrationTests}" />
+								<echo level="info" message="skipTests: ${skipTests}" />
+								<echo level="info" message="logback-configurationFile: ${logback-configurationFile}" />
 								<echo level="info" message="============================" />
 							</target>
 						</configuration>

@@ -38,8 +38,10 @@ Maven Demo project. Demonstrate:
 1. ${revision} in version
    1. https://issues.apache.org/jira/browse/MNG-5576
    1. https://maven.apache.org/maven-ci-friendly.html
-   1. This is actually "continuous delivery friendly"-feature, and it also can be used to have only one place in the project which set the version for all modules/sub-modules in the project
-}
+   1. This is actually "Maven Continuous Delivery Friendly Versions"-feature, and it also can be used to have only one place in the project which set the version for all modules/sub-modules in the project
+1. Plugin deactivation
+   1. using phase "none"
+   1. example: /submodule-one/pom.xml
 
 ## How to
 How to run checkstyle:
@@ -57,7 +59,7 @@ mvn verify -Pintegration-test
 How to run "quiet" tests mode:
 ```bash
 mvn test -Ptest-quiet
-mvn verify -Pintegration-test-quiet
+mvn verify -Ptest-quiet
 ```
 How to generate cobertura site report (generated site in target/site/cobertura/ )
 ```bash
@@ -69,8 +71,17 @@ mvn verify -Penvironment-super
 ```
 How to multiple Profiles:
 ```bash
-mvn clean verify -Penvironment-super -Pintegration-test
+mvn clean verify -Ptest-quiet -Pintegration-test -Penvironment-super -Pwithout-all
 ```
+How to switch off generation of "-all.jar" in the submodule-one
+```bash
+mvn clean verify -Pwithout-all
+```
+How to exclude sub-modules from processing
+```bash
+mvn --projects "!build-tools,!config" verify
+```
+
 
 ## checkstyle
 Here we have a bit tricky configuration to make it possible to use the same configuration files (checks & suppressions) in IDE plugins:
@@ -141,6 +152,14 @@ mvn install:install-file -Dfile=myjar-{version}.jar -DgroupId=my.group.id -Darti
 Add "all" jar in the project local repository :
 ```bash
 mvn install:install-file -Dfile=checkstyle-8.12-all.jar -DgroupId=com.puppycrawl.tools -DartifactId=checkstyle -Dversion=8.12 -Dpackaging=jar -Dclassifier=all -DlocalRepositoryPath=../project-maven-repository
+```
+Change property in the pom.xml (including all sub-modules)
+```bash
+mvn org.codehaus.mojo:versions-maven-plugin:2.7:set-property -Dproperty=MyProperty -DnewVersion=MyValue org.codehaus.mojo:versions-maven-plugin:2.7:commit
+```
+Change version in the pom.xml (including all sub-modules)
+```bash
+mvn org.codehaus.mojo:versions-maven-plugin:2.7:set-DnewVersion=MyNewVersion org.codehaus.mojo:versions-maven-plugin:2.7:commit
 ```
 
 ## License

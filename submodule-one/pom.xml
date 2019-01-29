@@ -11,15 +11,39 @@
 	<artifactId>submodule-one</artifactId>
 	<packaging>jar</packaging>
 	<name>Sub-Module One</name>
+	<properties>
+		<maven.shade.plugin.phase>package</maven.shade.plugin.phase>
+	</properties>
+	<profiles>
+		<profile>
+			<id>without-all</id>
+			<properties>
+					<maven.shade.plugin.phase>none</maven.shade.plugin.phase>
+			</properties>
+		</profile>
+	</profiles>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${plugin.version.maven.jar}</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<mainClass>net.cactusthorn.maven.DemoOne</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>${plugin.version.maven.shade}</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<phase>${maven.shade.plugin.phase}</phase>
 						<goals>
 							<goal>shade</goal>
 						</goals>
