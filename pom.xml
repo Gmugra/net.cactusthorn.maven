@@ -77,7 +77,7 @@
 		<plugin.version.maven.antrun>1.8</plugin.version.maven.antrun>
 		<plugin.version.flatten.maven>1.1.0</plugin.version.flatten.maven>
 
-		<skipIntegrationTests>true</skipIntegrationTests>
+		<skipITs>true</skipITs>
 		<skipTests>false</skipTests>
 		<logback-configurationFile>dummy.xml</logback-configurationFile>
 	</properties>
@@ -91,7 +91,7 @@
 		<profile>
 			<id>integration-test</id>
 			<properties>
-				<skipIntegrationTests>false</skipIntegrationTests>
+				<skipITs>false</skipITs>
 				<skipTests>true</skipTests>
 			</properties>
 		</profile>
@@ -148,7 +148,7 @@
 						<configuration>
 							<target>
 								<echo level="info" message="============================" />
-								<echo level="info" message="skipIntegrationTests: ${skipIntegrationTests}" />
+								<echo level="info" message="skipITs: ${skipITs}" />
 								<echo level="info" message="skipTests: ${skipTests}" />
 								<echo level="info" message="logback-configurationFile: ${logback-configurationFile}" />
 								<echo level="info" message="============================" />
@@ -291,18 +291,18 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${plugin.version.maven.failsafe}</version>
+				<configuration>
+					<skipTests>${skipITs}</skipTests>
+					<systemPropertyVariables>
+						<logback.configurationFile>${logback-configurationFile}</logback.configurationFile>
+					</systemPropertyVariables>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
 							<goal>integration-test</goal>
 							<goal>verify</goal>
 						</goals>
-						<configuration>
-							<skipTests>${skipIntegrationTests}</skipTests>
-							<systemPropertyVariables>
-								<logback.configurationFile>${logback-configurationFile}</logback.configurationFile>
-							</systemPropertyVariables>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -423,7 +423,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<execute />
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
