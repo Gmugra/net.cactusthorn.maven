@@ -36,6 +36,7 @@ Maven Demo project. Demonstrate:
 1. Echo in maven output
    1. Maven AntRun Plugin: https://maven.apache.org/plugins/maven-antrun-plugin/
 1. ${revision} in version
+   1. WARNING. this feature required at least maven 3.5.0-beta-1, otherwise flattenMode=resolveCiFriendliesOnly(flatten-maven-plugin) is not working
    1. https://issues.apache.org/jira/browse/MNG-5576
    1. https://maven.apache.org/maven-ci-friendly.html
    1. This is actually "Maven Continuous Delivery Friendly Versions"-feature, and it also can be used to have only one place in the project which set the version for all modules/sub-modules in the project
