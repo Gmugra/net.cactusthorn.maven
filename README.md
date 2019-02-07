@@ -27,6 +27,9 @@ Maven Demo project. Demonstrate:
    1. https://maven.apache.org/guides/mini/guide-multiple-repositories.html
 1. Enforce a minimum version of Maven in pom.xml
    1. Enforcer Plugin: https://maven.apache.org/enforcer/maven-enforcer-plugin/
+   1. Note: since maven 3.5.0 **prerequisites.maven** is deprecated, so this solution with maven-enforcer-plugin is only way
+      1. https://maven.apache.org/docs/3.5.0/release-notes.html
+      1. https://issues.apache.org/jira/browse/MNG-5297
 1. SCM information
    1. https://maven.apache.org/pom.html#SCM
 1. ZIP-artifacts with parameterized configuration files
