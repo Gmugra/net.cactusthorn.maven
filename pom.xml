@@ -70,7 +70,7 @@
 		<plugin.version.maven.surefire>3.0.0-M3</plugin.version.maven.surefire>
 		<plugin.version.maven.failsafe>3.0.0-M3</plugin.version.maven.failsafe>
 		<plugin.version.maven.checkstyle>3.0.0</plugin.version.maven.checkstyle>
-		<plugin.version.spotbugs.maven>3.1.10</plugin.version.spotbugs.maven>
+		<plugin.version.spotbugs.maven>3.1.11</plugin.version.spotbugs.maven>
 		<plugin.version.maven.shade>3.2.1</plugin.version.maven.shade>
 		<plugin.version.maven.jar>3.1.1</plugin.version.maven.jar>
 		<plugin.version.maven.enforcer>3.0.0-M2</plugin.version.maven.enforcer>

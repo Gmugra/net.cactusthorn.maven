@@ -54,7 +54,7 @@ mvn checkstyle:check
 ```
 How to run spotbugs:
 ```bash
-mvn spotbugs:check
+mvn com.github.spotbugs:spotbugs-maven-plugin:check
 ```
 How to run integration tests:
 ```bash
