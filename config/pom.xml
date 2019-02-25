@@ -49,6 +49,57 @@
 				<target.environment>super</target.environment>
 			</properties>
 		</profile>
+		<profile>
+			<id>only-eclipse</id>
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.codehaus.mojo</groupId>
+												<artifactId>flatten-maven-plugin</artifactId>
+												<versionRange>${plugin.version.flatten.maven}</versionRange>
+												<goals>
+													<goal>flatten</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore />
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-antrun-plugin</artifactId>
+												<versionRange>${plugin.version.maven.antrun}</versionRange>
+												<goals>
+													<goal>run</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute />
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
 	</profiles>
 	<build>
 		<plugins>
@@ -96,9 +147,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>${plugin.version.maven.resources}</version>
-				<!-- http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html: 
-					When multiple executions are given that match a particular phase, they are 
-					executed in the order specified in the POM, with inherited executions running 
+				<!-- http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html:
+					When multiple executions are given that match a particular phase, they are
+					executed in the order specified in the POM, with inherited executions running
 					first. -->
 				<executions>
 					<execution>
@@ -186,46 +237,5 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>flatten-maven-plugin</artifactId>
-										<versionRange>${plugin.version.flatten.maven}</versionRange>
-										<goals>
-											<goal>flatten</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-antrun-plugin</artifactId>
-										<versionRange>${plugin.version.maven.antrun}</versionRange>
-										<goals>
-											<goal>run</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>
