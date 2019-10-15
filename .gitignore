@@ -1,43 +1,19 @@
+# ignore everything whose name starts with a dot
 .*
+# discard ignoring Git configuration files
 !.gitattributes
 !.gitignore
 !.gitkeep
-!/.mvn/
-
-# Compiled class file
-*.class
 
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-target/
-
+# ignore Eclipse specifics
 bin/
 
-# eclipse specifics ( ignore everything except core.prefs )
-!.settings
-**/.settings/**
-!**/.settings/org.eclipse.jdt.core.prefs
-
-# IntelliJ specifics
-.idea/
+# ignore IntelliJ specifics
 *.iml
 
-#unignore all in project-maven-repository
-!/project-maven-repository/**
+# ignore Maven specifics(but discard ignoring .mvn/ folder in the root)
+target/
+!/.mvn/
