@@ -3,6 +3,7 @@ package net.cactusthorn.maven;
 import java.security.NoSuchAlgorithmException;
 import net.cactusthorn.utils.security.SHA1;
 
+@SuppressWarnings("checkstyle:magicnumber")
 public class DemoOne {
 
     public static void main(String... args) {
