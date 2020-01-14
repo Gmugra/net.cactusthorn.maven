@@ -168,6 +168,10 @@ Change version in the pom.xml (including all sub-modules)
 ```bash
 mvn org.codehaus.mojo:versions-maven-plugin:2.7:set-DnewVersion=MyNewVersion org.codehaus.mojo:versions-maven-plugin:2.7:commit
 ```
+Copy artifact from the local Maven repository to the folder
+```bash
+mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.1:copy -Dartifact=net.cactusthorn.gradle:submodules-spring-boot-simple-war:1.0.0:jar:sources -DoutputDirectory=C:\Temp\1
+```
 
 ## License
 Released under the BSD 2-Clause License
