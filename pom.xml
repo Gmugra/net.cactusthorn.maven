@@ -55,7 +55,7 @@
 		<!-- 3.5.0-beta-1 required for flattenMode=resolveCiFriendliesOnly in flatten-maven-plugin-->
 		<require.maven.version>3.5.0-beta-1</require.maven.version>
 
-		<dependency.version.spotbugs>3.1.11</dependency.version.spotbugs>
+		<dependency.version.spotbugs>3.1.12</dependency.version.spotbugs>
 		<dependency.version.checkstyle>8.28</dependency.version.checkstyle>
 		<dependency.version.cobertura>2.1.1</dependency.version.cobertura>
 		<dependency.version.junit>4.12</dependency.version.junit>
@@ -70,7 +70,7 @@
 		<plugin.version.maven.surefire>3.0.0-M3</plugin.version.maven.surefire>
 		<plugin.version.maven.failsafe>3.0.0-M3</plugin.version.maven.failsafe>
 		<plugin.version.maven.checkstyle>3.1.0</plugin.version.maven.checkstyle>
-		<plugin.version.spotbugs.maven>3.1.11</plugin.version.spotbugs.maven>
+		<plugin.version.spotbugs.maven>3.1.12.2</plugin.version.spotbugs.maven>
 		<plugin.version.maven.shade>3.2.1</plugin.version.maven.shade>
 		<plugin.version.maven.jar>3.1.1</plugin.version.maven.jar>
 		<plugin.version.maven.enforcer>3.0.0-M2</plugin.version.maven.enforcer>
@@ -381,7 +381,7 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>validate</id>
+						<id>checkstyle-validate</id>
 						<phase>validate</phase>
 						<goals>
 							<goal>check</goal>
@@ -392,11 +392,33 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>${plugin.version.spotbugs.maven}</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.github.spotbugs</groupId>
+						<artifactId>spotbugs</artifactId>
+						<version>${dependency.version.spotbugs}</version>
+					</dependency>
+					<dependency>
+						<groupId>net.cactusthorn.maven</groupId>
+						<artifactId>build-tools</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
 				<configuration>
 					<effort>Max</effort>
 					<threshold>Low</threshold>
 					<maxRank>20</maxRank>
 				</configuration>
+				<executions>
+					<execution>
+						<id>spotbugs-check</id>
+						<phase>test</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -448,64 +470,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>com.github.spotbugs</groupId>
-					<artifactId>spotbugs-maven-plugin</artifactId>
-					<version>${plugin.version.spotbugs.maven}</version>
-					<dependencies>
-						<dependency>
-							<groupId>com.github.spotbugs</groupId>
-							<artifactId>spotbugs</artifactId>
-							<version>${dependency.version.spotbugs}</version>
-						</dependency>
-						<dependency>
-							<groupId>net.cactusthorn.maven</groupId>
-							<artifactId>build-tools</artifactId>
-							<version>${project.version}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-				<!--plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>flatten-maven-plugin</artifactId>
-										<versionRange>${plugin.version.flatten.maven}</versionRange>
-										<goals>
-											<goal>flatten</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-antrun-plugin</artifactId>
-										<versionRange>${plugin.version.maven.antrun}</versionRange>
-										<goals>
-											<goal>run</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin-->
-			</plugins>
-		</pluginManagement>
 	</build>
 	<scm>
 		<url>https://github.com/Gmugra/net.cactusthorn.maven</url>

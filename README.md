@@ -10,9 +10,12 @@ Maven Demo project. Demonstrate:
    1. https://www.petrikainulainen.net/programming/maven/integration-testing-with-maven/
 1. Checkstyle
    1. http://checkstyle.sourceforge.net/
+   1. https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html
    1. it bound to the "validate" phase
 1. Spotbugs
    1. https://spotbugs.github.io/
+   1. https://spotbugs.github.io/spotbugs-maven-plugin/spotbugs-mojo.html
+   1. it bound to the "test" phase
 1. Cobertura
    1. http://cobertura.github.io/cobertura/
    1. Cobertura Plugin: http://www.mojohaus.org/cobertura-maven-plugin/
@@ -52,10 +55,6 @@ Maven Demo project. Demonstrate:
    1. [Get rid of POM not found warning for org.eclipse.m2e:lifecycle-mapping](https://stackoverflow.com/questions/7905501/get-rid-of-pom-not-found-warning-for-org-eclipse-m2elifecycle-mapping/23707050#23707050)
 
 ## How to
-How to run spotbugs:
-```bash
-mvn com.github.spotbugs:spotbugs-maven-plugin:check
-```
 How to run integration tests:
 ```bash
 mvn verify -Pintegration-test
