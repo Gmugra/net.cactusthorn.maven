@@ -84,7 +84,10 @@ How to exclude sub-modules from processing
 ```bash
 mvn --projects "!build-tools,!config" verify
 ```
-
+How to run with spotbugs
+```bash
+mvn -Pspotbugs verify
+```
 
 ## checkstyle
 Here we have a bit tricky configuration to make it possible to use the same configuration files (checks & suppressions) in IDE plugins:

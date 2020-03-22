@@ -27,7 +27,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>${plugin.version.maven.jar}</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -40,7 +39,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>${plugin.version.maven.shade}</version>
 				<executions>
 					<execution>
 						<phase>${maven.shade.plugin.phase}</phase>
