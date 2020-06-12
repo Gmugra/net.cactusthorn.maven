@@ -53,6 +53,8 @@ Maven Demo project. Demonstrate:
 1. org.eclipse.m2e
    1. https://www.eclipse.org/m2e/documentation/m2e-execution-not-covered.html
    1. [Get rid of POM not found warning for org.eclipse.m2e:lifecycle-mapping](https://stackoverflow.com/questions/7905501/get-rid-of-pom-not-found-warning-for-org-eclipse-m2elifecycle-mapping/23707050#23707050)
+1. OWASP Dependency-Check
+   1. https://jeremylong.github.io/DependencyCheck/dependency-check-maven/index.html
 
 ## How to
 How to run integration tests:
@@ -87,6 +89,10 @@ mvn --projects "!build-tools,!config" verify
 How to run with spotbugs
 ```bash
 mvn -Pspotbugs verify
+```
+How to run OWASP Dependency-Check
+```bash
+mvn -Powasp verify
 ```
 
 ## checkstyle

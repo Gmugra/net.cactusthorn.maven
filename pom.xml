@@ -49,7 +49,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<java.version>1.8</java.version>
+		<jdk.version>1.8</jdk.version>
 
 		<!-- 3.3.1 required for JVM and Command Line Options with .mvn -->
 		<!-- 3.5.0-beta-1 required for flattenMode=resolveCiFriendliesOnly in flatten-maven-plugin-->
@@ -77,6 +77,7 @@
 		<plugin.version.cobertura.maven>2.7</plugin.version.cobertura.maven>
 		<plugin.version.maven.antrun>1.8</plugin.version.maven.antrun>
 		<plugin.version.flatten.maven>1.1.0</plugin.version.flatten.maven>
+		<plugin.version.owasp.maven>5.3.2</plugin.version.owasp.maven>
 
 		<skipITs>true</skipITs>
 		<skipTests>false</skipTests>
@@ -99,7 +100,7 @@
 		<profile>
 			<id>spotbugs</id>
 			<properties>
-				<skipITs>false</skipITs>
+				<skipITs>true</skipITs>
 				<skipTests>true</skipTests>
 			</properties>
 			<build>
@@ -157,7 +158,6 @@
 										</pluginExecution>
 										<pluginExecution>
 											<pluginExecutionFilter>
-												<groupId>org.apache.maven.plugins</groupId>
 												<artifactId>maven-antrun-plugin</artifactId>
 												<versionRange>${plugin.version.maven.antrun}</versionRange>
 												<goals>
@@ -174,6 +174,28 @@
 						</plugin>
 					</plugins>
 				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<id>owasp</id>
+			<properties>
+				<skipITs>true</skipITs>
+				<skipTests>true</skipTests>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+					    <groupId>org.owasp</groupId>
+					    <artifactId>dependency-check-maven</artifactId>
+					    <executions>
+					        <execution>
+					            <goals>
+					                <goal>check</goal>
+					            </goals>
+					        </execution>
+					    </executions>
+					</plugin>
+				</plugins>
 			</build>
 		</profile>
 	</profiles>
@@ -217,7 +239,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
@@ -238,15 +259,13 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<executions>
 					<execution>
@@ -257,15 +276,19 @@
 						<configuration>
 							<rules>
 								<requireMavenVersion>
+									<message>Current version of Maven ${maven.version}: should be ${require.maven.version}, or higher!</message>
 									<version>${require.maven.version}</version>
 								</requireMavenVersion>
+								<requireJavaVersion>
+                                    <message>Current JDK version ${java.version}: should be ${jdk.version}, or higher!</message>
+                                    <version>${jdk.version}</version>
+                                </requireJavaVersion>
 							</rules>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<archive>
@@ -279,7 +302,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<executions>
 					<execution>
@@ -350,7 +372,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<skipTests>${skipTests}</skipTests>
@@ -365,7 +386,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<configuration>
 					<skipTests>${skipITs}</skipTests>
@@ -383,7 +403,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<configuration>
 					<logViolationsToConsole>true</logViolationsToConsole>
@@ -446,27 +465,22 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>${plugin.version.maven.antrun}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${plugin.version.maven.compiler}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>${plugin.version.maven.enforcer}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>${plugin.version.maven.jar}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>${plugin.version.maven.source}</version>
 				</plugin>
@@ -476,17 +490,14 @@
 					<version>${plugin.version.build.helper.maven}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${plugin.version.maven.surefire}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>${plugin.version.maven.failsafe}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>${plugin.version.maven.checkstyle}</version>
 					<dependencies>
@@ -549,9 +560,13 @@
 					<version>${plugin.version.flatten.maven}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-shade-plugin</artifactId>
 					<version>${plugin.version.maven.shade}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.owasp</groupId>
+					<artifactId>dependency-check-maven</artifactId>
+					<version>${plugin.version.owasp.maven}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
