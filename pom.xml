@@ -46,6 +46,8 @@
 		</repository>
 	</repositories>
 	<properties>
+		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -309,9 +311,10 @@
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
-						<!--manifestEntries>
-							<R>${buildNumber}</R>
-						</manifestEntries-->
+						<manifestEntries>
+							<Build-Time>${maven.build.timestamp}</Build-Time>
+							<!-- R>${buildNumber}</R -->
+						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
