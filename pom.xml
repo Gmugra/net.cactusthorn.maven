@@ -158,6 +158,7 @@
 										</pluginExecution>
 										<pluginExecution>
 											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
 												<artifactId>maven-antrun-plugin</artifactId>
 												<versionRange>${plugin.version.maven.antrun}</versionRange>
 												<goals>
@@ -166,6 +167,19 @@
 											</pluginExecutionFilter>
 											<action>
 												<execute />
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-checkstyle-plugin</artifactId>
+												<versionRange>${plugin.version.maven.checkstyle}</versionRange>
+												<goals>
+													<goal>check</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore />
 											</action>
 										</pluginExecution>
 									</pluginExecutions>
@@ -280,9 +294,9 @@
 									<version>${require.maven.version}</version>
 								</requireMavenVersion>
 								<requireJavaVersion>
-                                    <message>Current JDK version ${java.version}: should be ${jdk.version}, or higher!</message>
-                                    <version>${jdk.version}</version>
-                                </requireJavaVersion>
+								<message>Current JDK version ${java.version}: should be ${jdk.version}, or higher!</message>
+									<version>${jdk.version}</version>
+								</requireJavaVersion>
 							</rules>
 						</configuration>
 					</execution>
