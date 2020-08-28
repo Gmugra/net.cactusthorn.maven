@@ -64,19 +64,19 @@
 
 		<dependency.version.net-cactusthorn-utils>0.1</dependency.version.net-cactusthorn-utils>
 
-		<plugin.version.maven.compiler>3.8.0</plugin.version.maven.compiler>
-		<plugin.version.maven.source>3.0.1</plugin.version.maven.source>
-		<plugin.version.build.helper.maven>3.0.0</plugin.version.build.helper.maven>
-		<plugin.version.maven.surefire>3.0.0-M3</plugin.version.maven.surefire>
-		<plugin.version.maven.failsafe>3.0.0-M3</plugin.version.maven.failsafe>
-		<plugin.version.maven.checkstyle>3.1.0</plugin.version.maven.checkstyle>
-		<plugin.version.spotbugs.maven>4.0.0</plugin.version.spotbugs.maven>
-		<plugin.version.maven.shade>3.2.1</plugin.version.maven.shade>
-		<plugin.version.maven.jar>3.1.1</plugin.version.maven.jar>
-		<plugin.version.maven.enforcer>3.0.0-M2</plugin.version.maven.enforcer>
+		<plugin.version.maven.compiler>3.8.1</plugin.version.maven.compiler>
+		<plugin.version.maven.source>3.2.1</plugin.version.maven.source>
+		<plugin.version.build.helper.maven>3.2.0</plugin.version.build.helper.maven>
+		<plugin.version.maven.surefire>3.0.0-M5</plugin.version.maven.surefire>
+		<plugin.version.maven.failsafe>3.0.0-M5</plugin.version.maven.failsafe>
+		<plugin.version.maven.checkstyle>3.1.1</plugin.version.maven.checkstyle>
+		<plugin.version.spotbugs.maven>4.0.4</plugin.version.spotbugs.maven>
+		<plugin.version.maven.shade>3.2.4</plugin.version.maven.shade>
+		<plugin.version.maven.jar>3.2.0</plugin.version.maven.jar>
+		<plugin.version.maven.enforcer>3.0.0-M3</plugin.version.maven.enforcer>
 		<plugin.version.cobertura.maven>2.7</plugin.version.cobertura.maven>
-		<plugin.version.maven.antrun>1.8</plugin.version.maven.antrun>
-		<plugin.version.flatten.maven>1.1.0</plugin.version.flatten.maven>
+		<plugin.version.maven.antrun>3.0.0</plugin.version.maven.antrun>
+		<plugin.version.flatten.maven>1.2.5</plugin.version.flatten.maven>
 		<plugin.version.owasp.maven>5.3.2</plugin.version.owasp.maven>
 
 		<skipITs>true</skipITs>
