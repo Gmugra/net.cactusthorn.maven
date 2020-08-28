@@ -80,6 +80,7 @@
 		<plugin.version.maven.antrun>3.0.0</plugin.version.maven.antrun>
 		<plugin.version.flatten.maven>1.2.5</plugin.version.flatten.maven>
 		<plugin.version.owasp.maven>5.3.2</plugin.version.owasp.maven>
+		<plugin.version.buildnumber>1.4</plugin.version.buildnumber>
 
 		<skipITs>true</skipITs>
 		<skipTests>false</skipTests>
@@ -313,7 +314,8 @@
 						</manifest>
 						<manifestEntries>
 							<Build-Time>${maven.build.timestamp}</Build-Time>
-							<!-- R>${buildNumber}</R -->
+							<Git-Commit>${buildNumber}</Git-Commit>
+							<Git-Branch>${scmBranch}</Git-Branch>
 						</manifestEntries>
 					</archive>
 				</configuration>
@@ -464,10 +466,10 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.4</version>
+				<version>${plugin.version.buildnumber}</version>
 				<executions>
 					<execution>
 						<id>buildnumber</id>
@@ -477,7 +479,12 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin-->
+				<configuration>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+					<shortRevisionLength>8</shortRevisionLength>
+				</configuration>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
