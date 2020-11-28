@@ -44,7 +44,7 @@
 		<!-- 3.5.0-beta-1 required for flattenMode=resolveCiFriendliesOnly in flatten-maven-plugin-->
 		<require.maven.version>3.5.0-beta-1</require.maven.version>
 
-		<dependency.version.junit>4.12</dependency.version.junit>
+		<dependency.version.junit>4.13.1</dependency.version.junit>
 		<dependency.version.slf4j-api>1.7.25</dependency.version.slf4j-api>
 		<dependency.version.logback-classic>1.2.3</dependency.version.logback-classic>
 		<dependency.version.net-cactusthorn-utils>0.1</dependency.version.net-cactusthorn-utils>
