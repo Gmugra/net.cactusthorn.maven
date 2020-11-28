@@ -62,7 +62,7 @@
 		<plugin.version.maven.checkstyle>3.1.1</plugin.version.maven.checkstyle>
 			<dependency.version.checkstyle>8.29</dependency.version.checkstyle>
 		<plugin.version.spotbugs.maven>4.1.4</plugin.version.spotbugs.maven>
-			<dependency.version.spotbugs>4.0.1</dependency.version.spotbugs>
+			<dependency.version.spotbugs>4.2.0</dependency.version.spotbugs>
 		<plugin.version.maven.shade>3.2.4</plugin.version.maven.shade>
 		<plugin.version.maven.jar>3.2.0</plugin.version.maven.jar>
 		<plugin.version.maven.enforcer>3.0.0-M3</plugin.version.maven.enforcer>
