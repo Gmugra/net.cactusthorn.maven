@@ -100,6 +100,10 @@ How to run OWASP Dependency-Check
 ```bash
 mvn -Powasp verify
 ```
+How to check maven plugin versions
+```bash
+mvn versions:display-plugin-updates
+```
 
 ## checkstyle
 Here we have a bit tricky configuration to make it possible to use the same configuration files (checks & suppressions) in IDE plugins:
