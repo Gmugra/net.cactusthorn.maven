@@ -16,6 +16,9 @@ Maven Demo project. Demonstrate:
    1. https://spotbugs.github.io/
    1. https://spotbugs.github.io/spotbugs-maven-plugin/spotbugs-mojo.html
    1. it bound to the "test" phase
+1. PMD
+   1. https://pmd.github.io
+   1. https://maven.apache.org/plugins/maven-pmd-plugin/plugin-info.html
 1. Cobertura
    1. http://cobertura.github.io/cobertura/
    1. Cobertura Plugin: http://www.mojohaus.org/cobertura-maven-plugin/
