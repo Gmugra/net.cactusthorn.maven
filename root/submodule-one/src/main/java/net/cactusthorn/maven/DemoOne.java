@@ -52,7 +52,7 @@ public class DemoOne {
 
     public long plus(long val) {
         this.value += val;
-        return this.value;
+        return (this.value); //to get PMD warning
     }
 
     public long getValue() {

@@ -76,6 +76,7 @@
 		<plugin.version.maven.assembly>3.3.0</plugin.version.maven.assembly>
 		<plugin.version.maven.dependency>3.1.2</plugin.version.maven.dependency>
 		<plugin.version.maven.versions>2.8.1</plugin.version.maven.versions>
+		<plugin.version.maven.pmd>3.14.0</plugin.version.maven.pmd>
 
 	</properties>
 
@@ -392,6 +393,11 @@
 							<artifactId>checkstyle</artifactId>
 							<version>${dependency.version.checkstyle}</version>
 						</dependency>
+						<dependency>
+							<groupId>net.cactusthorn.maven</groupId>
+							<artifactId>build-tools</artifactId>
+							<version>${project.version}</version>
+						</dependency>
 					</dependencies>
 				</plugin>
 
@@ -405,7 +411,24 @@
 							<artifactId>spotbugs</artifactId>
 							<version>${dependency.version.spotbugs}</version>
 						</dependency>
+						<dependency>
+							<groupId>net.cactusthorn.maven</groupId>
+							<artifactId>build-tools</artifactId>
+							<version>${project.version}</version>
+						</dependency>
 					</dependencies>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${plugin.version.maven.pmd}</version>
+					<dependencies>
+							<dependency>
+								<groupId>net.cactusthorn.maven</groupId>
+								<artifactId>build-tools</artifactId>
+								<version>${project.version}</version>
+							</dependency>
+						</dependencies>
 				</plugin>
 
 				<plugin>

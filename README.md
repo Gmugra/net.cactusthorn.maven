@@ -96,6 +96,10 @@ How to run with spotbugs
 ```bash
 mvn -Pspotbugs verify
 ```
+How to run with PMD
+```bash
+mvn -Ppmd pmd:pmd
+```
 How to run OWASP Dependency-Check
 ```bash
 mvn -Powasp verify
