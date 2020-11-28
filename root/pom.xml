@@ -99,6 +99,15 @@
 						<configuration>
 							<rulesets>/maven-pmd-plugin.xml</rulesets>
 						</configuration>
+						<executions>
+							<execution>
+								<id>pmd-check</id>
+								<phase>test</phase>
+								<goals>
+									<goal>pmd</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
