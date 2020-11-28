@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.cactusthorn.maven</groupId>
+		<artifactId>bom</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<artifactId>root</artifactId>
+	<packaging>pom</packaging>
+	<name>Root</name>
+	<description>Maven tips and tricks</description>
+
+	<repositories>
+		<repository>
+			<id>project-maven-repository</id>
+			<name>The project local maven repository</name>
+			<url>file:///${project.basedir}/project-maven-repository</url>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>ignore</checksumPolicy>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<checksumPolicy>ignore</checksumPolicy>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<properties>
+		<skipITs>true</skipITs>
+		<skipTests>false</skipTests>
+		<logback-configurationFile>dummy.xml</logback-configurationFile>
+	</properties>
+
+	<profiles>
+
+		<profile>
+			<id>test-quiet</id>
+			<properties>
+				<logback-configurationFile>only-error-logback-test.xml</logback-configurationFile>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>integration-test</id>
+			<properties>
+				<skipITs>false</skipITs>
+				<skipTests>true</skipTests>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>spotbugs</id>
+			<properties>
+				<skipITs>true</skipITs>
+				<skipTests>true</skipTests>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.spotbugs</groupId>
+						<artifactId>spotbugs-maven-plugin</artifactId>
+						<configuration>
+							<effort>Max</effort>
+							<threshold>Low</threshold>
+							<maxRank>20</maxRank>
+						</configuration>
+						<executions>
+							<execution>
+								<id>spotbugs-check</id>
+								<phase>test</phase>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>owasp</id>
+			<properties>
+				<skipITs>true</skipITs>
+				<skipTests>true</skipTests>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.owasp</groupId>
+						<artifactId>dependency-check-maven</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+	<modules>
+		<module>submodule-one</module>
+		<module>submodule-pom</module>
+	</modules>
+
+	<dependencies>
+		<!-- artifact from the project-maven-repository (local project repository)-->
+		<dependency>
+			<groupId>net.cactusthorn</groupId>
+			<artifactId>utils</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<!-- to make maven-build-tools available in surefire/failsafe-plugin classpath -->
+		<dependency>
+			<groupId>net.cactusthorn.maven</groupId>
+			<artifactId>build-tools</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo level="info" message="============================" />
+								<echo level="info" message="skipITs: ${skipITs}" />
+								<echo level="info" message="skipTests: ${skipTests}" />
+								<echo level="info" message="logback-configurationFile: ${logback-configurationFile}" />
+								<echo level="info" message="============================" />
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>${skipTests}</skipTests>
+					<excludes>
+						<exclude>**/*IT.java</exclude>
+						<exclude>**/IT*.java</exclude>
+						<exclude>**/*ITCase.java</exclude>
+					</excludes>
+					<systemPropertyVariables>
+						<logback.configurationFile>${logback-configurationFile}</logback.configurationFile>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<skipTests>${skipITs}</skipTests>
+					<systemPropertyVariables>
+						<logback.configurationFile>${logback-configurationFile}</logback.configurationFile>
+					</systemPropertyVariables>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<logViolationsToConsole>true</logViolationsToConsole>
+					<configLocation>/checkstyle_checks.xml</configLocation>
+					<propertyExpansion>suppressionsFile=/checkstyle_suppressions.xml</propertyExpansion>
+				</configuration>
+				<executions>
+					<execution>
+						<id>checkstyle-validate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>net.cactusthorn.maven</groupId>
+						<artifactId>build-tools</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

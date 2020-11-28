@@ -3,19 +3,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>net.cactusthorn.maven</groupId>
-	<artifactId>root</artifactId>
+	<artifactId>bom</artifactId>
 	<!--
 		${revision} can be used in the version starting from maven 3.2.1:
 		https://issues.apache.org/jira/browse/MNG-5576
 		https://maven.apache.org/maven-ci-friendly.html
-
-		The value of the ${revision} property set in /.mvn/maven.config
 	-->
 	<version>${revision}</version>
 	<packaging>pom</packaging>
-	<name>Maven Template</name>
+	<name>BOM</name>
 	<description>Maven tips and tricks</description>
+
 	<licenses>
 		<license>
 			<name>BSD 2-Clause License</name>
@@ -23,29 +23,16 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+
 	<developers>
 		<developer>
 			<name>Alexei Khatskevich</name>
 		</developer>
 	</developers>
-	<repositories>
-		<repository>
-			<id>project-maven-repository</id>
-			<name>The project local maven repository</name>
-			<url>file:///${project.basedir}/project-maven-repository</url>
-			<releases>
-				<enabled>true</enabled>
-				<checksumPolicy>ignore</checksumPolicy>
-				<updatePolicy>always</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<checksumPolicy>ignore</checksumPolicy>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
+
 	<properties>
+		<revision>0.2</revision>
+
 		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,78 +44,40 @@
 		<!-- 3.5.0-beta-1 required for flattenMode=resolveCiFriendliesOnly in flatten-maven-plugin-->
 		<require.maven.version>3.5.0-beta-1</require.maven.version>
 
-		<dependency.version.spotbugs>4.0.1</dependency.version.spotbugs>
-		<dependency.version.checkstyle>8.29</dependency.version.checkstyle>
-		<dependency.version.cobertura>2.1.1</dependency.version.cobertura>
 		<dependency.version.junit>4.12</dependency.version.junit>
 		<dependency.version.slf4j-api>1.7.25</dependency.version.slf4j-api>
 		<dependency.version.logback-classic>1.2.3</dependency.version.logback-classic>
-
 		<dependency.version.net-cactusthorn-utils>0.1</dependency.version.net-cactusthorn-utils>
 
+		<plugin.version.maven.resources>3.2.0</plugin.version.maven.resources>
+		<plugin.version.maven.clean>3.1.0</plugin.version.maven.clean>
+		<plugin.version.maven.install>3.0.0-M1</plugin.version.maven.install>
+		<plugin.version.maven.deploy>3.0.0-M1</plugin.version.maven.deploy>
 		<plugin.version.maven.compiler>3.8.1</plugin.version.maven.compiler>
 		<plugin.version.maven.source>3.2.1</plugin.version.maven.source>
 		<plugin.version.build.helper.maven>3.2.0</plugin.version.build.helper.maven>
 		<plugin.version.maven.surefire>3.0.0-M5</plugin.version.maven.surefire>
 		<plugin.version.maven.failsafe>3.0.0-M5</plugin.version.maven.failsafe>
 		<plugin.version.maven.checkstyle>3.1.1</plugin.version.maven.checkstyle>
+			<dependency.version.checkstyle>8.29</dependency.version.checkstyle>
 		<plugin.version.spotbugs.maven>4.0.4</plugin.version.spotbugs.maven>
+			<dependency.version.spotbugs>4.0.1</dependency.version.spotbugs>
 		<plugin.version.maven.shade>3.2.4</plugin.version.maven.shade>
 		<plugin.version.maven.jar>3.2.0</plugin.version.maven.jar>
 		<plugin.version.maven.enforcer>3.0.0-M3</plugin.version.maven.enforcer>
 		<plugin.version.cobertura.maven>2.7</plugin.version.cobertura.maven>
+			<dependency.version.cobertura>2.1.1</dependency.version.cobertura>
 		<plugin.version.maven.antrun>3.0.0</plugin.version.maven.antrun>
 		<plugin.version.flatten.maven>1.2.5</plugin.version.flatten.maven>
-		<plugin.version.owasp.maven>5.3.2</plugin.version.owasp.maven>
+		<plugin.version.owasp.maven>6.0.3</plugin.version.owasp.maven>
 		<plugin.version.buildnumber>1.4</plugin.version.buildnumber>
+		<plugin.version.properties.maven>1.0.0</plugin.version.properties.maven>
+		<plugin.version.maven.assembly>3.3.0</plugin.version.maven.assembly>
+		<plugin.version.maven.dependency>3.1.2</plugin.version.maven.dependency>
 
-		<skipITs>true</skipITs>
-		<skipTests>false</skipTests>
-		<logback-configurationFile>dummy.xml</logback-configurationFile>
 	</properties>
+
 	<profiles>
-		<profile>
-			<id>test-quiet</id>
-			<properties>
-				<logback-configurationFile>only-error-logback-test.xml</logback-configurationFile>
-			</properties>
-		</profile>
-		<profile>
-			<id>integration-test</id>
-			<properties>
-				<skipITs>false</skipITs>
-				<skipTests>true</skipTests>
-			</properties>
-		</profile>
-		<profile>
-			<id>spotbugs</id>
-			<properties>
-				<skipITs>true</skipITs>
-				<skipTests>true</skipTests>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.github.spotbugs</groupId>
-						<artifactId>spotbugs-maven-plugin</artifactId>
-						<configuration>
-							<effort>Max</effort>
-							<threshold>Low</threshold>
-							<maxRank>20</maxRank>
-						</configuration>
-						<executions>
-							<execution>
-								<id>spotbugs-check</id>
-								<phase>test</phase>
-								<goals>
-									<goal>check</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 		<profile>
 			<id>only-eclipse</id>
 			<activation>
@@ -193,334 +142,240 @@
 				</pluginManagement>
 			</build>
 		</profile>
-		<profile>
-			<id>owasp</id>
-			<properties>
-				<skipITs>true</skipITs>
-				<skipTests>true</skipTests>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-					    <groupId>org.owasp</groupId>
-					    <artifactId>dependency-check-maven</artifactId>
-					    <executions>
-					        <execution>
-					            <goals>
-					                <goal>check</goal>
-					            </goals>
-					        </execution>
-					    </executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 	</profiles>
+
 	<modules>
 		<module>build-tools</module>
 		<module>config</module>
-		<module>submodule-one</module>
-		<module>submodule-pom</module>
+		<module>root</module>
 	</modules>
-	<dependencies>
-		<!-- artifact from the project-maven-repository (local project repository)-->
-		<dependency>
-			<groupId>net.cactusthorn</groupId>
-			<artifactId>utils</artifactId>
-			<version>${dependency.version.net-cactusthorn-utils}</version>
-		</dependency>
-		<!-- to make maven-build-tools available in surefire/failsafe-plugin classpath -->
-		<dependency>
-			<groupId>net.cactusthorn.maven</groupId>
-			<artifactId>build-tools</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${dependency.version.junit}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${dependency.version.slf4j-api}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${dependency.version.logback-classic}</version>
-		</dependency>
-	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>net.cactusthorn</groupId>
+				<artifactId>utils</artifactId>
+				<version>${dependency.version.net-cactusthorn-utils}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.cactusthorn.maven</groupId>
+				<artifactId>build-tools</artifactId>
+				<version>${project.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${dependency.version.slf4j-api}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${dependency.version.junit}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${dependency.version.logback-classic}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
+
 		<plugins>
 			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>validate</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo level="info" message="============================" />
-								<echo level="info" message="skipITs: ${skipITs}" />
-								<echo level="info" message="skipTests: ${skipTests}" />
-								<echo level="info" message="logback-configurationFile: ${logback-configurationFile}" />
-								<echo level="info" message="============================" />
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
-			</plugin>
-			<plugin>
 				<artifactId>maven-enforcer-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>enforce-maven</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<message>Current version of Maven ${maven.version}: should be ${require.maven.version}, or higher!</message>
-									<version>${require.maven.version}</version>
-								</requireMavenVersion>
-								<requireJavaVersion>
-								<message>Current JDK version ${java.version}: should be ${jdk.version}, or higher!</message>
-									<version>${jdk.version}</version>
-								</requireJavaVersion>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-						</manifest>
-						<manifestEntries>
-							<Build-Time>${maven.build.timestamp}</Build-Time>
-							<Git-Commit>${buildNumber}</Git-Commit>
-							<Git-Branch>${scmBranch}</Git-Branch>
-						</manifestEntries>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-generate-sources</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>generated-src/main/java</source>
-							</sources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add-generate-resources</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>add-resource</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>generated-src/main/resources</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add-integration-test-sources</id>
-						<phase>generate-test-sources</phase>
-						<goals>
-							<goal>add-test-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src/integration-test/java</source>
-							</sources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add-integration-test-resources</id>
-						<phase>generate-test-resources</phase>
-						<goals>
-							<goal>add-test-resource</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/integration-test/resources</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skipTests>${skipTests}</skipTests>
-					<excludes>
-						<exclude>**/*IT.java</exclude>
-						<exclude>**/IT*.java</exclude>
-						<exclude>**/*ITCase.java</exclude>
-					</excludes>
-					<systemPropertyVariables>
-						<logback.configurationFile>${logback-configurationFile}</logback.configurationFile>
-					</systemPropertyVariables>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<configuration>
-					<skipTests>${skipITs}</skipTests>
-					<systemPropertyVariables>
-						<logback.configurationFile>${logback-configurationFile}</logback.configurationFile>
-					</systemPropertyVariables>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<configuration>
-					<logViolationsToConsole>true</logViolationsToConsole>
-					<configLocation>/checkstyle_checks.xml</configLocation>
-					<propertyExpansion>suppressionsFile=/checkstyle_suppressions.xml</propertyExpansion>
-				</configuration>
-				<executions>
-					<execution>
-						<id>checkstyle-validate</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>flatten-maven-plugin</artifactId>
-				<configuration>
-					<updatePomFile>true</updatePomFile>
-					<flattenMode>resolveCiFriendliesOnly</flattenMode>
-				</configuration>
-				<executions>
-					<execution>
-						<id>flatten</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>flatten</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>flatten.clean</id>
-						<phase>clean</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>${plugin.version.buildnumber}</version>
-				<executions>
-					<execution>
-						<id>buildnumber</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>create</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<doCheck>false</doCheck>
-					<doUpdate>false</doUpdate>
-					<shortRevisionLength>8</shortRevisionLength>
-				</configuration>
 			</plugin>
 		</plugins>
+
 		<pluginManagement>
 			<plugins>
+
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${plugin.version.maven.clean}</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${plugin.version.maven.install}</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${plugin.version.maven.deploy}</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${plugin.version.maven.resources}</version>
+				</plugin>
+
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>${plugin.version.maven.antrun}</version>
 				</plugin>
+
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${plugin.version.maven.dependency}</version>
+				</plugin>
+
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${plugin.version.maven.compiler}</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+					</configuration>
 				</plugin>
+
 				<plugin>
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>${plugin.version.maven.enforcer}</version>
+					<executions>
+						<execution>
+							<id>enforce-maven</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<requireMavenVersion>
+										<message>Current version of Maven ${maven.version}: should be ${require.maven.version}, or higher!</message>
+										<version>${require.maven.version}</version>
+									</requireMavenVersion>
+									<requireJavaVersion>
+									<message>Current JDK version ${java.version}: should be ${jdk.version}, or higher!</message>
+										<version>${jdk.version}</version>
+									</requireJavaVersion>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
+
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>${plugin.version.maven.jar}</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+								<Build-Time>${maven.build.timestamp}</Build-Time>
+								<Git-Commit>${buildNumber}</Git-Commit>
+								<Git-Branch>${scmBranch}</Git-Branch>
+							</manifestEntries>
+						</archive>
+					</configuration>
 				</plugin>
+
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>${plugin.version.maven.source}</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+								<Build-Time>${maven.build.timestamp}</Build-Time>
+								<Git-Commit>${buildNumber}</Git-Commit>
+								<Git-Branch>${scmBranch}</Git-Branch>
+							</manifestEntries>
+						</archive>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
+
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
 					<version>${plugin.version.build.helper.maven}</version>
+					<executions>
+						<execution>
+							<id>add-generate-sources</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>add-source</goal>
+							</goals>
+							<configuration>
+								<sources>
+									<source>generated-src/main/java</source>
+								</sources>
+							</configuration>
+						</execution>
+						<execution>
+							<id>add-generate-resources</id>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>add-resource</goal>
+							</goals>
+							<configuration>
+								<resources>
+									<resource>
+										<directory>generated-src/main/resources</directory>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+						<execution>
+							<id>add-integration-test-sources</id>
+							<phase>generate-test-sources</phase>
+							<goals>
+								<goal>add-test-source</goal>
+							</goals>
+							<configuration>
+								<sources>
+									<source>src/integration-test/java</source>
+								</sources>
+							</configuration>
+						</execution>
+						<execution>
+							<id>add-integration-test-resources</id>
+							<phase>generate-test-resources</phase>
+							<goals>
+								<goal>add-test-resource</goal>
+							</goals>
+							<configuration>
+								<resources>
+									<resource>
+										<directory>src/integration-test/resources</directory>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
+
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${plugin.version.maven.surefire}</version>
 				</plugin>
+
 				<plugin>
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>${plugin.version.maven.failsafe}</version>
 				</plugin>
+
 				<plugin>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>${plugin.version.maven.checkstyle}</version>
@@ -530,13 +385,9 @@
 							<artifactId>checkstyle</artifactId>
 							<version>${dependency.version.checkstyle}</version>
 						</dependency>
-						<dependency>
-							<groupId>net.cactusthorn.maven</groupId>
-							<artifactId>build-tools</artifactId>
-							<version>${project.version}</version>
-						</dependency>
 					</dependencies>
 				</plugin>
+
 				<plugin>
 					<groupId>com.github.spotbugs</groupId>
 					<artifactId>spotbugs-maven-plugin</artifactId>
@@ -547,13 +398,9 @@
 							<artifactId>spotbugs</artifactId>
 							<version>${dependency.version.spotbugs}</version>
 						</dependency>
-						<dependency>
-							<groupId>net.cactusthorn.maven</groupId>
-							<artifactId>build-tools</artifactId>
-							<version>${project.version}</version>
-						</dependency>
 					</dependencies>
 				</plugin>
+
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>cobertura-maven-plugin</artifactId>
@@ -578,20 +425,75 @@
 						</dependency>
 					</dependencies>
 				</plugin>
+
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>flatten-maven-plugin</artifactId>
 					<version>${plugin.version.flatten.maven}</version>
+					<configuration>
+						<updatePomFile>true</updatePomFile>
+						<flattenMode>resolveCiFriendliesOnly</flattenMode>
+					</configuration>
+					<executions>
+						<execution>
+							<id>flatten</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>flatten.clean</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
+
 				<plugin>
 					<artifactId>maven-shade-plugin</artifactId>
 					<version>${plugin.version.maven.shade}</version>
 				</plugin>
+
 				<plugin>
 					<groupId>org.owasp</groupId>
 					<artifactId>dependency-check-maven</artifactId>
 					<version>${plugin.version.owasp.maven}</version>
 				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>buildnumber-maven-plugin</artifactId>
+					<version>${plugin.version.buildnumber}</version>
+					<executions>
+						<execution>
+							<id>buildnumber</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>create</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<doCheck>false</doCheck>
+						<doUpdate>false</doUpdate>
+						<shortRevisionLength>8</shortRevisionLength>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>${plugin.version.properties.maven}</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${plugin.version.maven.assembly}</version>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -600,4 +502,5 @@
 		<url>https://github.com/Gmugra/net.cactusthorn.maven</url>
 		<connection>scm:git:https://github.com/Gmugra/net.cactusthorn.maven.git</connection>
 	</scm>
+
 </project>

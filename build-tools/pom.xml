@@ -3,107 +3,37 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.cactusthorn.maven</groupId>
+
+	<parent>
+		<groupId>net.cactusthorn.maven</groupId>
+		<artifactId>bom</artifactId>
+		<version>${revision}</version>
+	</parent>
+
 	<artifactId>build-tools</artifactId>
-	<!-- the value of the ${revision} property set in /.mvn/maven.config -->
-	<version>${revision}</version>
 	<packaging>jar</packaging>
 	<name>Build Tools</name>
 	<description>Resources for Building</description>
-	<licenses>
-		<license>
-			<name>BSD 2-Clause License</name>
-			<url>http://opensource.org/licenses/BSD-2-Clause</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-	<developers>
-		<developer>
-			<name>Alexei Khatskevich</name>
-		</developer>
-	</developers>
+
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<jdk.version>1.8</jdk.version>
-		<plugin.version.maven.compiler>3.8.0</plugin.version.maven.compiler>
-		<plugin.version.flatten.maven>1.1.0</plugin.version.flatten.maven>
+		<maven.main.skip>true</maven.main.skip>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
-	<profiles>
-		<profile>
-			<id>only-eclipse</id>
-			<activation>
-				<property>
-					<name>m2e.version</name>
-				</property>
-			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.eclipse.m2e</groupId>
-							<artifactId>lifecycle-mapping</artifactId>
-							<version>1.0.0</version>
-							<configuration>
-								<lifecycleMappingMetadata>
-									<pluginExecutions>
-										<pluginExecution>
-											<pluginExecutionFilter>
-												<groupId>org.codehaus.mojo</groupId>
-												<artifactId>flatten-maven-plugin</artifactId>
-												<versionRange>${plugin.version.flatten.maven}</versionRange>
-												<goals>
-													<goal>flatten</goal>
-												</goals>
-											</pluginExecutionFilter>
-											<action>
-												<ignore />
-											</action>
-										</pluginExecution>
-									</pluginExecutions>
-								</lifecycleMappingMetadata>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-	</profiles>
+
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${plugin.version.maven.compiler}</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
-			</plugin>
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>flatten-maven-plugin</artifactId>
-				<version>${plugin.version.flatten.maven}</version>
-				<configuration>
-					<updatePomFile>true</updatePomFile>
-					<flattenMode>resolveCiFriendliesOnly</flattenMode>
-				</configuration>
-				<executions>
-					<execution>
-						<id>flatten</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>flatten</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>flatten.clean</id>
-						<phase>clean</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+			</plugin>
+
 		</plugins>
 	</build>
+
 </project>

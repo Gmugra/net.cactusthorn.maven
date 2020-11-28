@@ -3,36 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.cactusthorn.maven</groupId>
+
+	<parent>
+		<groupId>net.cactusthorn.maven</groupId>
+		<artifactId>bom</artifactId>
+		<version>${revision}</version>
+	</parent>
+
 	<artifactId>config</artifactId>
-	<!-- the value of the ${revision} property set in /.mvn/maven.config -->
-	<version>${revision}</version>
 	<packaging>pom</packaging>
 	<name>Configurations</name>
 	<description>Prepare ZIP with configurations</description>
-	<licenses>
-		<license>
-			<name>BSD 2-Clause License</name>
-			<url>http://opensource.org/licenses/BSD-2-Clause</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-	<developers>
-		<developer>
-			<name>Alexei Khatskevich</name>
-		</developer>
-	</developers>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<plugin.version.maven.compiler>3.8.0</plugin.version.maven.compiler>
-		<plugin.version.properties.maven>1.0.0</plugin.version.properties.maven>
-		<plugin.version.maven.resources>3.1.0</plugin.version.maven.resources>
-		<plugin.version.maven.assembly>3.1.1</plugin.version.maven.assembly>
-		<plugin.version.maven.antrun>1.8</plugin.version.maven.antrun>
-		<plugin.version.flatten.maven>1.1.0</plugin.version.flatten.maven>
-	</properties>
 	<profiles>
 		<profile>
 			<id>environment-default</id>
@@ -49,62 +31,13 @@
 				<target.environment>super</target.environment>
 			</properties>
 		</profile>
-		<profile>
-			<id>only-eclipse</id>
-			<activation>
-				<property>
-					<name>m2e.version</name>
-				</property>
-			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.eclipse.m2e</groupId>
-							<artifactId>lifecycle-mapping</artifactId>
-							<version>1.0.0</version>
-							<configuration>
-								<lifecycleMappingMetadata>
-									<pluginExecutions>
-										<pluginExecution>
-											<pluginExecutionFilter>
-												<groupId>org.codehaus.mojo</groupId>
-												<artifactId>flatten-maven-plugin</artifactId>
-												<versionRange>${plugin.version.flatten.maven}</versionRange>
-												<goals>
-													<goal>flatten</goal>
-												</goals>
-											</pluginExecutionFilter>
-											<action>
-												<ignore />
-											</action>
-										</pluginExecution>
-										<pluginExecution>
-											<pluginExecutionFilter>
-												<artifactId>maven-antrun-plugin</artifactId>
-												<versionRange>${plugin.version.maven.antrun}</versionRange>
-												<goals>
-													<goal>run</goal>
-												</goals>
-											</pluginExecutionFilter>
-											<action>
-												<execute />
-											</action>
-										</pluginExecution>
-									</pluginExecutions>
-								</lifecycleMappingMetadata>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
 	</profiles>
+
 	<build>
 		<plugins>
+
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>${plugin.version.maven.antrun}</version>
 				<executions>
 					<execution>
 						<phase>validate</phase>
@@ -121,10 +54,10 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>properties-maven-plugin</artifactId>
-				<version>${plugin.version.properties.maven}</version>
 				<executions>
 					<execution>
 						<id>properties</id>
@@ -141,9 +74,9 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>${plugin.version.maven.resources}</version>
 				<!-- http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html:
 					When multiple executions are given that match a particular phase, they are
 					executed in the order specified in the POM, with inherited executions running
@@ -189,9 +122,9 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>${plugin.version.maven.assembly}</version>
 				<configuration>
 					<descriptors>
 						<descriptor>${project.basedir}/assembly.xml</descriptor>
@@ -207,31 +140,12 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>flatten-maven-plugin</artifactId>
-				<version>${plugin.version.flatten.maven}</version>
-				<configuration>
-					<updatePomFile>true</updatePomFile>
-					<flattenMode>resolveCiFriendliesOnly</flattenMode>
-				</configuration>
-				<executions>
-					<execution>
-						<id>flatten</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>flatten</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>flatten.clean</id>
-						<phase>clean</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>

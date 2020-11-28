@@ -59,6 +59,8 @@ Maven Demo project. Demonstrate:
    1. https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Available_Variables
 1. Git commit-SHA & Branch in MANIFEST.MF
    1. https://www.mojohaus.org/buildnumber-maven-plugin/
+1. Bill of Materials (BOM) POM
+   1. https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms
 
 ## How to
 How to run integration tests:
