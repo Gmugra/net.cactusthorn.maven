@@ -85,7 +85,25 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
+		<profile>
+			<id>pmd</id>
+			<properties>
+				<skipITs>true</skipITs>
+				<skipTests>true</skipTests>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-pmd-plugin</artifactId>
+						<configuration>
+							<rulesets>/maven-pmd-plugin.xml</rulesets>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 		<profile>
 			<id>owasp</id>
 			<properties>
@@ -229,13 +247,6 @@
 						</goals>
 					</execution>
 				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>net.cactusthorn.maven</groupId>
-						<artifactId>build-tools</artifactId>
-						<version>${project.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 
 			<plugin>
