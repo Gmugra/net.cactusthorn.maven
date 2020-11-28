@@ -33,6 +33,14 @@
 				<artifactId>buildnumber-maven-plugin</artifactId>
 			</plugin>
 
+			<!-- to avoid unnecessary output -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
