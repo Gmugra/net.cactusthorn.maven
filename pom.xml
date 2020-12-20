@@ -42,41 +42,41 @@
 
 		<!-- 3.3.1 required for JVM and Command Line Options with .mvn -->
 		<!-- 3.5.0-beta-1 required for flattenMode=resolveCiFriendliesOnly in flatten-maven-plugin-->
-		<require.maven.version>3.5.0-beta-1</require.maven.version>
+		<require.version>3.5.0-beta-1</require.version>
 
-		<dependency.version.junit>4.13.1</dependency.version.junit>
-		<dependency.version.slf4j-api>1.7.25</dependency.version.slf4j-api>
-		<dependency.version.logback-classic>1.2.3</dependency.version.logback-classic>
-		<dependency.version.net-cactusthorn-utils>0.1</dependency.version.net-cactusthorn-utils>
+		<dependency.junit>4.13.1</dependency.junit>
+		<dependency.slf4j>1.7.25</dependency.slf4j>
+		<dependency.logback>1.2.3</dependency.logback>
+		<dependency.net-cactusthorn-utils>0.1</dependency.net-cactusthorn-utils>
 
-		<plugin.version.maven.site>3.9.1</plugin.version.maven.site>
-		<plugin.version.maven.resources>3.2.0</plugin.version.maven.resources>
-		<plugin.version.maven.clean>3.1.0</plugin.version.maven.clean>
-		<plugin.version.maven.install>3.0.0-M1</plugin.version.maven.install>
-		<plugin.version.maven.deploy>3.0.0-M1</plugin.version.maven.deploy>
-		<plugin.version.maven.compiler>3.8.1</plugin.version.maven.compiler>
-		<plugin.version.maven.source>3.2.1</plugin.version.maven.source>
-		<plugin.version.build.helper.maven>3.2.0</plugin.version.build.helper.maven>
-		<plugin.version.maven.surefire>3.0.0-M5</plugin.version.maven.surefire>
-		<plugin.version.maven.failsafe>3.0.0-M5</plugin.version.maven.failsafe>
-		<plugin.version.maven.checkstyle>3.1.1</plugin.version.maven.checkstyle>
-			<dependency.version.checkstyle>8.29</dependency.version.checkstyle>
-		<plugin.version.spotbugs.maven>4.1.4</plugin.version.spotbugs.maven>
-			<dependency.version.spotbugs>4.2.0</dependency.version.spotbugs>
-		<plugin.version.maven.shade>3.2.4</plugin.version.maven.shade>
-		<plugin.version.maven.jar>3.2.0</plugin.version.maven.jar>
-		<plugin.version.maven.enforcer>3.0.0-M3</plugin.version.maven.enforcer>
-		<plugin.version.cobertura.maven>2.7</plugin.version.cobertura.maven>
-			<dependency.version.cobertura>2.1.1</dependency.version.cobertura>
-		<plugin.version.maven.antrun>3.0.0</plugin.version.maven.antrun>
-		<plugin.version.flatten.maven>1.2.5</plugin.version.flatten.maven>
-		<plugin.version.owasp.maven>6.0.3</plugin.version.owasp.maven>
-		<plugin.version.buildnumber>1.4</plugin.version.buildnumber>
-		<plugin.version.properties.maven>1.0.0</plugin.version.properties.maven>
-		<plugin.version.maven.assembly>3.3.0</plugin.version.maven.assembly>
-		<plugin.version.maven.dependency>3.1.2</plugin.version.maven.dependency>
-		<plugin.version.maven.versions>2.8.1</plugin.version.maven.versions>
-		<plugin.version.maven.pmd>3.14.0</plugin.version.maven.pmd>
+		<plugin.site>3.9.1</plugin.site>
+		<plugin.resources>3.2.0</plugin.resources>
+		<plugin.clean>3.1.0</plugin.clean>
+		<plugin.install>3.0.0-M1</plugin.install>
+		<plugin.deploy>3.0.0-M1</plugin.deploy>
+		<plugin.compiler>3.8.1</plugin.compiler>
+		<plugin.source>3.2.1</plugin.source>
+		<plugin.build-helper>3.2.0</plugin.build-helper>
+		<plugin.surefire>3.0.0-M5</plugin.surefire>
+		<plugin.failsafe>3.0.0-M5</plugin.failsafe>
+		<plugin.checkstyle>3.1.1</plugin.checkstyle>
+			<dependency.checkstyle>8.29</dependency.checkstyle>
+		<plugin.spotbugs>4.1.4</plugin.spotbugs>
+			<dependency.spotbugs>4.2.0</dependency.spotbugs>
+		<plugin.shade>3.2.4</plugin.shade>
+		<plugin.jar>3.2.0</plugin.jar>
+		<plugin.enforcer>3.0.0-M3</plugin.enforcer>
+		<plugin.cobertura>2.7</plugin.cobertura>
+			<dependency.cobertura>2.1.1</dependency.cobertura>
+		<plugin.antrun>3.0.0</plugin.antrun>
+		<plugin.flatten>1.2.5</plugin.flatten>
+		<plugin.owasp>6.0.3</plugin.owasp>
+		<plugin.buildnumber>1.4</plugin.buildnumber>
+		<plugin.properties>1.0.0</plugin.properties>
+		<plugin.assembly>3.3.0</plugin.assembly>
+		<plugin.dependency>3.1.2</plugin.dependency>
+		<plugin.versions>2.8.1</plugin.versions>
+		<plugin.pmd>3.14.0</plugin.pmd>
 
 	</properties>
 
@@ -102,7 +102,7 @@
 											<pluginExecutionFilter>
 												<groupId>org.codehaus.mojo</groupId>
 												<artifactId>flatten-maven-plugin</artifactId>
-												<versionRange>${plugin.version.flatten.maven}</versionRange>
+												<versionRange>${plugin.flatten}</versionRange>
 												<goals>
 													<goal>flatten</goal>
 												</goals>
@@ -113,9 +113,9 @@
 										</pluginExecution>
 										<pluginExecution>
 											<pluginExecutionFilter>
-												<groupId>org.apache.maven.plugins</groupId>
+												<groupId>org.apache.plugins</groupId>
 												<artifactId>maven-antrun-plugin</artifactId>
-												<versionRange>${plugin.version.maven.antrun}</versionRange>
+												<versionRange>${plugin.antrun}</versionRange>
 												<goals>
 													<goal>run</goal>
 												</goals>
@@ -126,9 +126,9 @@
 										</pluginExecution>
 										<pluginExecution>
 											<pluginExecutionFilter>
-												<groupId>org.apache.maven.plugins</groupId>
+												<groupId>org.apache.plugins</groupId>
 												<artifactId>maven-checkstyle-plugin</artifactId>
-												<versionRange>${plugin.version.maven.checkstyle}</versionRange>
+												<versionRange>${plugin.checkstyle}</versionRange>
 												<goals>
 													<goal>check</goal>
 												</goals>
@@ -159,7 +159,7 @@
 			<dependency>
 				<groupId>net.cactusthorn</groupId>
 				<artifactId>utils</artifactId>
-				<version>${dependency.version.net-cactusthorn-utils}</version>
+				<version>${dependency.net-cactusthorn-utils}</version>
 			</dependency>
 
 			<dependency>
@@ -172,20 +172,20 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>${dependency.version.slf4j-api}</version>
+				<version>${dependency.slf4j}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>${dependency.version.junit}</version>
+				<version>${dependency.junit}</version>
 				<scope>test</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>${dependency.version.logback-classic}</version>
+				<version>${dependency.logback}</version>
 			</dependency>
 
 		</dependencies>
@@ -204,42 +204,42 @@
 
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>${plugin.version.maven.site}</version>
+					<version>${plugin.site}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>${plugin.version.maven.clean}</version>
+					<version>${plugin.clean}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>${plugin.version.maven.install}</version>
+					<version>${plugin.install}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>${plugin.version.maven.deploy}</version>
+					<version>${plugin.deploy}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>${plugin.version.maven.resources}</version>
+					<version>${plugin.resources}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
-					<version>${plugin.version.maven.antrun}</version>
+					<version>${plugin.antrun}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>${plugin.version.maven.dependency}</version>
+					<version>${plugin.dependency}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${plugin.version.maven.compiler}</version>
+					<version>${plugin.compiler}</version>
 					<configuration>
 						<source>${jdk.version}</source>
 						<target>${jdk.version}</target>
@@ -248,7 +248,7 @@
 
 				<plugin>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>${plugin.version.maven.enforcer}</version>
+					<version>${plugin.enforcer}</version>
 					<executions>
 						<execution>
 							<id>enforce-maven</id>
@@ -258,8 +258,8 @@
 							<configuration>
 								<rules>
 									<requireMavenVersion>
-										<message>Current version of Maven ${maven.version}: should be ${require.maven.version}, or higher!</message>
-										<version>${require.maven.version}</version>
+										<message>Current version of Maven ${maven.version}: should be ${require.version}, or higher!</message>
+										<version>${require.version}</version>
 									</requireMavenVersion>
 									<requireJavaVersion>
 									<message>Current JDK version ${java.version}: should be ${jdk.version}, or higher!</message>
@@ -273,7 +273,7 @@
 
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>${plugin.version.maven.jar}</version>
+					<version>${plugin.jar}</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -290,7 +290,7 @@
 
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>${plugin.version.maven.source}</version>
+					<version>${plugin.source}</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -317,7 +317,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>${plugin.version.build.helper.maven}</version>
+					<version>${plugin.build-helper}</version>
 					<executions>
 						<execution>
 							<id>add-generate-sources</id>
@@ -376,22 +376,22 @@
 
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${plugin.version.maven.surefire}</version>
+					<version>${plugin.surefire}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>${plugin.version.maven.failsafe}</version>
+					<version>${plugin.failsafe}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>${plugin.version.maven.checkstyle}</version>
+					<version>${plugin.checkstyle}</version>
 					<dependencies>
 						<dependency>
 							<groupId>com.puppycrawl.tools</groupId>
 							<artifactId>checkstyle</artifactId>
-							<version>${dependency.version.checkstyle}</version>
+							<version>${dependency.checkstyle}</version>
 						</dependency>
 						<dependency>
 							<groupId>net.cactusthorn.maven</groupId>
@@ -404,12 +404,12 @@
 				<plugin>
 					<groupId>com.github.spotbugs</groupId>
 					<artifactId>spotbugs-maven-plugin</artifactId>
-					<version>${plugin.version.spotbugs.maven}</version>
+					<version>${plugin.spotbugs}</version>
 					<dependencies>
 						<dependency>
 							<groupId>com.github.spotbugs</groupId>
 							<artifactId>spotbugs</artifactId>
-							<version>${dependency.version.spotbugs}</version>
+							<version>${dependency.spotbugs}</version>
 						</dependency>
 						<dependency>
 							<groupId>net.cactusthorn.maven</groupId>
@@ -421,7 +421,7 @@
 
 				<plugin>
 					<artifactId>maven-pmd-plugin</artifactId>
-					<version>${plugin.version.maven.pmd}</version>
+					<version>${plugin.pmd}</version>
 					<dependencies>
 							<dependency>
 								<groupId>net.cactusthorn.maven</groupId>
@@ -434,13 +434,13 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>cobertura-maven-plugin</artifactId>
-					<version>${plugin.version.cobertura.maven}</version>
+					<version>${plugin.cobertura}</version>
 					<dependencies>
 						<!-- to avoid ERROR: SLF4J: Class path contains multiple SLF4J bindings. -->
 						<dependency>
 							<groupId>net.sourceforge.cobertura</groupId>
 							<artifactId>cobertura</artifactId>
-							<version>${dependency.version.cobertura}</version>
+							<version>${dependency.cobertura}</version>
 							<exclusions>
 								<exclusion>
 									<groupId>ch.qos.logback</groupId>
@@ -451,7 +451,7 @@
 						<dependency>
 							<groupId>ch.qos.logback</groupId>
 							<artifactId>logback-classic</artifactId>
-							<version>${dependency.version.logback-classic}</version>
+							<version>${dependency.logback}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -459,7 +459,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>flatten-maven-plugin</artifactId>
-					<version>${plugin.version.flatten.maven}</version>
+					<version>${plugin.flatten}</version>
 					<configuration>
 						<updatePomFile>true</updatePomFile>
 						<flattenMode>resolveCiFriendliesOnly</flattenMode>
@@ -484,19 +484,19 @@
 
 				<plugin>
 					<artifactId>maven-shade-plugin</artifactId>
-					<version>${plugin.version.maven.shade}</version>
+					<version>${plugin.shade}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.owasp</groupId>
 					<artifactId>dependency-check-maven</artifactId>
-					<version>${plugin.version.owasp.maven}</version>
+					<version>${plugin.owasp}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>buildnumber-maven-plugin</artifactId>
-					<version>${plugin.version.buildnumber}</version>
+					<version>${plugin.buildnumber}</version>
 					<executions>
 						<execution>
 							<id>buildnumber</id>
@@ -516,18 +516,18 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>properties-maven-plugin</artifactId>
-					<version>${plugin.version.properties.maven}</version>
+					<version>${plugin.properties}</version>
 				</plugin>
 
 				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
-					<version>${plugin.version.maven.assembly}</version>
+					<version>${plugin.assembly}</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
-					<version>${plugin.version.maven.versions}</version>
+					<version>${plugin.versions}</version>
 				</plugin>
 
 			</plugins>
@@ -536,7 +536,7 @@
 
 	<scm>
 		<url>https://github.com/Gmugra/net.cactusthorn.maven</url>
-		<connection>scm:git:https://github.com/Gmugra/net.cactusthorn.maven.git</connection>
+		<connection>scm:git:https://github.com/Gmugra/net.cactusthorn.git</connection>
 	</scm>
 
 </project>
