@@ -44,7 +44,7 @@
 		<!-- 3.5.0-beta-1 required for flattenMode=resolveCiFriendliesOnly in flatten-maven-plugin-->
 		<require.version>3.5.0-beta-1</require.version>
 
-		<dependency.junit>4.13.1</dependency.junit>
+		<dependency.junit>4.13.2</dependency.junit>
 		<dependency.slf4j>1.7.25</dependency.slf4j>
 		<dependency.logback>1.2.3</dependency.logback>
 		<dependency.net-cactusthorn-utils>0.1</dependency.net-cactusthorn-utils>
@@ -59,18 +59,18 @@
 		<plugin.build-helper>3.2.0</plugin.build-helper>
 		<plugin.surefire>3.0.0-M5</plugin.surefire>
 		<plugin.failsafe>3.0.0-M5</plugin.failsafe>
-		<plugin.checkstyle>3.1.1</plugin.checkstyle>
-			<dependency.checkstyle>8.29</dependency.checkstyle>
-		<plugin.spotbugs>4.1.4</plugin.spotbugs>
-			<dependency.spotbugs>4.2.0</dependency.spotbugs>
+		<plugin.checkstyle>3.1.2</plugin.checkstyle>
+			<dependency.checkstyle>8.43</dependency.checkstyle>
+		<plugin.spotbugs>4.2.3</plugin.spotbugs>
+			<dependency.spotbugs>4.2.3</dependency.spotbugs>
 		<plugin.shade>3.2.4</plugin.shade>
 		<plugin.jar>3.2.0</plugin.jar>
 		<plugin.enforcer>3.0.0-M3</plugin.enforcer>
 		<plugin.cobertura>2.7</plugin.cobertura>
 			<dependency.cobertura>2.1.1</dependency.cobertura>
 		<plugin.antrun>3.0.0</plugin.antrun>
-		<plugin.flatten>1.2.5</plugin.flatten>
-		<plugin.owasp>6.0.3</plugin.owasp>
+		<plugin.flatten>1.2.7</plugin.flatten>
+		<plugin.owasp>6.2.0</plugin.owasp>
 		<plugin.buildnumber>1.4</plugin.buildnumber>
 		<plugin.properties>1.0.0</plugin.properties>
 		<plugin.assembly>3.3.0</plugin.assembly>

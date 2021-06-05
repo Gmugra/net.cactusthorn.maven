@@ -114,7 +114,7 @@ mvn versions:display-plugin-updates
 ```
 How to analyze dependency
 ```bash
-mvn mvn dependency:analyze
+mvn dependency:analyze
 ```
 
 ## checkstyle
