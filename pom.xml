@@ -45,7 +45,7 @@
 		<require.version>3.5.0-beta-1</require.version>
 
 		<dependency.junit>4.13.2</dependency.junit>
-		<dependency.slf4j>1.7.30</dependency.slf4j>
+		<dependency.slf4j>1.7.31</dependency.slf4j>
 		<dependency.logback>1.2.3</dependency.logback>
 		<dependency.net-cactusthorn-utils>0.1</dependency.net-cactusthorn-utils>
 
