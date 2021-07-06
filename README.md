@@ -166,6 +166,9 @@ Note: It support default configurations/properties and overriding default config
 
 ## couple of maven hints
 
+Takari Extensions:
+http://takari.io/book/30-team-maven.html
+
 List of predefined Maven properties:
 https://github.com/cko/predefined_maven_properties/blob/master/README.md
 
