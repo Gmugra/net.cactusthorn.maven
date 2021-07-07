@@ -166,6 +166,9 @@ Note: It support default configurations/properties and overriding default config
 
 ## couple of maven hints
 
+mvnd - the Maven Daemon:
+https://github.com/mvndaemon/mvnd
+
 Takari Extensions:
 http://takari.io/book/30-team-maven.html
 
