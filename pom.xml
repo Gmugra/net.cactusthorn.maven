@@ -70,7 +70,7 @@
 			<dependency.cobertura>2.1.1</dependency.cobertura>
 		<plugin.antrun>3.0.0</plugin.antrun>
 		<plugin.flatten>1.2.7</plugin.flatten>
-		<plugin.owasp>6.3.2</plugin.owasp>
+		<plugin.owasp>6.4.1</plugin.owasp>
 		<plugin.buildnumber>1.4</plugin.buildnumber>
 		<plugin.properties>1.0.0</plugin.properties>
 		<plugin.assembly>3.3.0</plugin.assembly>
