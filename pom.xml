@@ -62,7 +62,7 @@
 		<plugin.checkstyle>3.1.2</plugin.checkstyle>
 			<dependency.checkstyle>9.1</dependency.checkstyle>
 		<plugin.spotbugs>4.4.2.2</plugin.spotbugs>
-			<dependency.spotbugs>4.4.2</dependency.spotbugs>
+			<dependency.spotbugs>4.5.2</dependency.spotbugs>
 		<plugin.shade>3.2.4</plugin.shade>
 		<plugin.jar>3.2.0</plugin.jar>
 		<plugin.enforcer>3.0.0</plugin.enforcer>
