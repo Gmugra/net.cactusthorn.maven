@@ -46,7 +46,7 @@
 
 		<dependency.junit>4.13.2</dependency.junit>
 		<dependency.slf4j>1.7.32</dependency.slf4j>
-		<dependency.logback>1.2.7</dependency.logback>
+		<dependency.logback>1.2.9</dependency.logback>
 		<dependency.net-cactusthorn-utils>0.1</dependency.net-cactusthorn-utils>
 
 		<plugin.site>3.9.1</plugin.site>
