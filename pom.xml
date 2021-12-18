@@ -71,7 +71,7 @@
 		<plugin.antrun>3.0.0</plugin.antrun>
 		<plugin.flatten>1.2.7</plugin.flatten>
 		<plugin.owasp>6.5.0</plugin.owasp>
-		<plugin.buildnumber>1.4</plugin.buildnumber>
+		<plugin.buildnumber>3.0.0</plugin.buildnumber>
 		<plugin.properties>1.0.0</plugin.properties>
 		<plugin.assembly>3.3.0</plugin.assembly>
 		<plugin.dependency>3.2.0</plugin.dependency>
