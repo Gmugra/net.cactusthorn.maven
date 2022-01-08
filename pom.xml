@@ -64,7 +64,7 @@
 		<plugin.spotbugs>4.5.0.0</plugin.spotbugs>
 			<dependency.spotbugs>4.5.3</dependency.spotbugs>
 		<plugin.shade>3.2.4</plugin.shade>
-		<plugin.jar>3.2.0</plugin.jar>
+		<plugin.jar>3.2.1</plugin.jar>
 		<plugin.enforcer>3.0.0</plugin.enforcer>
 		<plugin.cobertura>2.7</plugin.cobertura>
 			<dependency.cobertura>2.1.1</dependency.cobertura>
