@@ -49,7 +49,7 @@
 		<dependency.logback>1.2.11</dependency.logback>
 		<dependency.net-cactusthorn-utils>0.1</dependency.net-cactusthorn-utils>
 
-		<plugin.site>3.10.0</plugin.site>
+		<plugin.site>3.12.0</plugin.site>
 		<plugin.resources>3.2.0</plugin.resources>
 		<plugin.clean>3.1.0</plugin.clean>
 		<plugin.install>3.0.0-M1</plugin.install>
