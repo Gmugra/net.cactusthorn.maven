@@ -76,7 +76,7 @@
 		<plugin.assembly>3.3.0</plugin.assembly>
 		<plugin.dependency>3.3.0</plugin.dependency>
 		<plugin.versions>2.10.0</plugin.versions>
-		<plugin.pmd>3.15.0</plugin.pmd>
+		<plugin.pmd>3.16.0</plugin.pmd>
 
 	</properties>
 
