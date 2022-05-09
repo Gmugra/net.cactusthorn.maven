@@ -68,7 +68,7 @@
 		<plugin.enforcer>3.0.0</plugin.enforcer>
 		<plugin.cobertura>2.7</plugin.cobertura>
 			<dependency.cobertura>2.1.1</dependency.cobertura>
-		<plugin.antrun>3.0.0</plugin.antrun>
+		<plugin.antrun>3.1.0</plugin.antrun>
 		<plugin.flatten>1.2.7</plugin.flatten>
 		<plugin.owasp>6.5.3</plugin.owasp>
 		<plugin.buildnumber>3.0.0</plugin.buildnumber>
