@@ -58,7 +58,7 @@
 		<plugin.source>3.2.1</plugin.source>
 		<plugin.build-helper>3.3.0</plugin.build-helper>
 		<plugin.surefire>3.0.0-M7</plugin.surefire>
-		<plugin.failsafe>3.0.0-M6</plugin.failsafe>
+		<plugin.failsafe>3.0.0-M7</plugin.failsafe>
 		<plugin.checkstyle>3.1.2</plugin.checkstyle>
 			<dependency.checkstyle>10.2</dependency.checkstyle>
 		<plugin.spotbugs>4.6.0.0</plugin.spotbugs>
