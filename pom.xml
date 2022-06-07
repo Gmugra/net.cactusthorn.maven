@@ -72,7 +72,7 @@
 		<plugin.flatten>1.2.7</plugin.flatten>
 		<plugin.owasp>7.1.0</plugin.owasp>
 		<plugin.buildnumber>3.0.0</plugin.buildnumber>
-		<plugin.properties>1.0.0</plugin.properties>
+		<plugin.properties>1.1.0</plugin.properties>
 		<plugin.assembly>3.3.0</plugin.assembly>
 		<plugin.dependency>3.3.0</plugin.dependency>
 		<plugin.versions>2.10.0</plugin.versions>
