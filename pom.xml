@@ -73,7 +73,7 @@
 		<plugin.owasp>7.1.0</plugin.owasp>
 		<plugin.buildnumber>3.0.0</plugin.buildnumber>
 		<plugin.properties>1.1.0</plugin.properties>
-		<plugin.assembly>3.3.0</plugin.assembly>
+		<plugin.assembly>3.7.1</plugin.assembly>
 		<plugin.dependency>3.3.0</plugin.dependency>
 		<plugin.versions>2.11.0</plugin.versions>
 		<plugin.pmd>3.17.0</plugin.pmd>
