@@ -53,7 +53,7 @@
 		<plugin.resources>3.2.0</plugin.resources>
 		<plugin.clean>3.2.0</plugin.clean>
 		<plugin.install>3.0.0-M1</plugin.install>
-		<plugin.deploy>3.0.0-M2</plugin.deploy>
+		<plugin.deploy>3.1.4</plugin.deploy>
 		<plugin.compiler>3.10.1</plugin.compiler>
 		<plugin.source>3.2.1</plugin.source>
 		<plugin.build-helper>3.3.0</plugin.build-helper>
