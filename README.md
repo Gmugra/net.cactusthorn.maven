@@ -169,6 +169,12 @@ Note: It support default configurations/properties and overriding default config
 mvnd - the Maven Daemon:
 https://github.com/mvndaemon/mvnd
 
+Apache Maven Build Cache Extension:
+https://github.com/apache/maven-build-cache-extension
+
+Maven BuildTime Profiler:
+https://github.com/khmarbaise/maven-buildtime-profiler
+
 Takari Extensions:
 http://takari.io/book/30-team-maven.html
 
