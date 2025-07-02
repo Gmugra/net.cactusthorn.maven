@@ -65,7 +65,7 @@
 			<dependency.spotbugs>4.7.0</dependency.spotbugs>
 		<plugin.shade>3.3.0</plugin.shade>
 		<plugin.jar>3.2.2</plugin.jar>
-		<plugin.enforcer>3.0.0</plugin.enforcer>
+		<plugin.enforcer>3.6.0</plugin.enforcer>
 		<plugin.cobertura>2.7</plugin.cobertura>
 			<dependency.cobertura>2.1.1</dependency.cobertura>
 		<plugin.antrun>3.1.0</plugin.antrun>
