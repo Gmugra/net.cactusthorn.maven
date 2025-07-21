@@ -158,7 +158,8 @@ Scope *system* make it possible, but it's very special scope. This scope is work
 
 The best option for having local jar files as a dependency is to create local maven repository directly in the project folder (and as result it will be part of your project sources)
 1. *mvn install:install-file with* with *-DlocalRepositoryPath* will do all the work.
-1. To avoid the "Could not validate integrity of download ... Checksum validation failed, no checksums available" warning - use *checksumPolicy = ignore* in the pom.xml, which is fine for such local repository.
+2. To avoid the "Could not validate integrity of download ... Checksum validation failed, no checksums available" warning - use *checksumPolicy = ignore* in the pom.xml, which is fine for such local repository.
+2. in settings.xml, in case of "mirrorOf", it need to avoid `<mirrorOf>*</mirrorOf>`. Such configuration will “mirror” all repositories , including the "project local" repositories, which kills the idea. To solve it use `<mirrorOf>external:*</mirrorOf>` (https://maven.apache.org/guides/mini/guide-mirror-settings.html).
 
 ## ZIP-artifacts with parameterized configuration files
 Sometimes it's nice to have ZIP-artifacts with different configuration files (and resources) which will be late used during deployment the project in various environments(e.g. deployment with [Jenkins](https://jenkins.io/)). So, for each environment we want to have specific ZIP, filled with specific (for the environment) configurations, resources and so on.
